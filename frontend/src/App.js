@@ -1,11 +1,12 @@
 import './App.css';
 import SetUp from './pages/setUp';
 import Launch from './pages/launch';
+import AuthPage from './pages/AuthPage';
 
 function App() {
   return (
     <div className="App">
-    <Launch/>
+    <AuthPage/>
 
 
  
