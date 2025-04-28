@@ -1,0 +1,71 @@
+@keyframes fadeDown {
+    from{
+        opacity: 0;
+        transform: translateY(-50px);
+
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+}
+@keyframes fadeUp {
+    from{
+        opacity: 0;
+        transform: translateY(100px);
+
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+}
+@keyframes fadeRight {
+    from{
+        opacity: 0;
+        transform: translateX(-100px);
+
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+}
+
+
+
+#vsPurple{
+    display: block;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 250px;
+    animation: fadeDown 0.7s ease-out forwards;
+    
+   
+}
+
+#vsRed{
+    display: block;
+    position: relative;
+    top: 250px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeUp 0.7s ease-out forwards;
+   
+   
+}
+
+#runner{
+position: relative;
+left: 250px;
+top: -20px;
+animation: fadeRight 0.9s ease-in ;
+   
+    
+}

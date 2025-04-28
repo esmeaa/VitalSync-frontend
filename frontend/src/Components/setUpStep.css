@@ -1,0 +1,82 @@
+.option-button{
+   border-radius: 50%;
+   width: 300px;
+   height: 300px;
+   background-color: #343434eb;
+   border-color: white;
+   border-width: 2.5px;
+   overflow: hidden;
+   transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.options p{
+   font-family: "Poppins";
+   font-weight: 700;
+   font-size: 30px;
+   margin:20px;
+   transition: transform 0.3s ease, font-size 0.3s ease;
+}
+.option{
+    padding: 25px
+}
+#title{
+    position: relative;
+    font-size: 60px;
+    padding: 25px;
+    top: 30px;
+
+}
+.paragraph{
+    font-size: 23px;
+    padding: 10px
+}
+#gender-step-para, #goal-step-para, #ethnicity-step-para{
+    height: 90px;
+    padding-top: 70px;
+    padding-right: 50px;
+    padding-left: 50px;
+  
+
+    background-color: #B3A0FF;
+    color: black;
+
+}
+
+.option img{
+   height: 100px;
+  
+}
+.option-button:hover{
+    background-color: #FB5959;
+    border-width: 20px; 
+    transform: scale(1.1);
+    border-color: #FB5959;
+  
+    
+}
+
+.option-button:hover #icon{
+    filter: drop-shadow(0px 200px 0 #000000);
+    transform: translateY(-200px);
+  
+
+}
+.option-button:hover .button-caption{
+    transform: scale(1.1);
+    font-size:50px;
+
+}
+
+
+/* turns icon black - use when hover and selecting.option img{
+    height: 100px;
+    filter: drop-shadow(0px 200px 0 #000000);
+    transform: translateY(-200px);
+   
+ }
+ */
+ 
+
+
+
+
