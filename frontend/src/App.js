@@ -7,7 +7,7 @@ import ProfilePage from './pages/profilepage';
 function App() {
   return (
     <div className="App">
-      <ProfilePage />
+      <AuthPage/>
       
     </div>
   );

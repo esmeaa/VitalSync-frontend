@@ -29,7 +29,7 @@ const SetUpStep = ({step}) => {
     const stepFormat = {
         gender: {
             title: "What's Your Gender?",
-            paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            paragraph: "This helps us determine appropriate fitness plans and recommendations for you",
             options:[{optionName: "Male", icon: male},{optionName: "Female", icon: female}],
             className: "gender-step",
         },
