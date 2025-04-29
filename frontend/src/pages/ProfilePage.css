@@ -1,3 +1,35 @@
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--light-purple);
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--white);
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.menu-item span {
+  flex: 1;
+  text-align: left;
+}
+
+.arrow {
+  font-size: 20px;
+  color: var(--light-purple);
+}
+
 :root {
   --white: #ffffff;
   --black: #232323;
