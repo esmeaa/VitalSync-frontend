@@ -1,4 +1,8 @@
 import React from 'react';
+import homeIcon from '../images/Home.png';
+import fileIcon from '../images/Nutrition.png';
+import starIcon from '../images/Resources Icon.png';
+import supportIcon from '../images/Support & Help.png';
 
 const Profile = () => {
   return (
@@ -43,11 +47,19 @@ const Profile = () => {
       </div>
 
       <footer className="profile-footer">
-        <div className="footer-icon">🏠</div>
-        <div className="footer-icon">📄</div>
-        <div className="footer-icon">⭐</div>
-        <div className="footer-icon">🔔</div>
-      </footer>
+  <div className="footer-icon">
+    <img src={homeIcon} alt="Home" className="icon-img"/>
+  </div>
+  <div className="footer-icon">
+    <img src={fileIcon} alt="File" className="icon-img"/>
+  </div>
+  <div className="footer-icon">
+    <img src={starIcon} alt="Star" className="icon-img"/>
+  </div>
+  <div className="footer-icon">
+    <img src={supportIcon} alt="Support" className="icon-img"/>
+  </div>
+</footer>
     </div>
   );
 };
