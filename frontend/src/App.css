@@ -6,3 +6,7 @@ h1{
  
   font-family: "Poppins";
 }
+.nav-link{
+  color: white;
+  text-decoration: none; 
+}
