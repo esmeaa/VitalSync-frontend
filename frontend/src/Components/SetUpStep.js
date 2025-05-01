@@ -80,7 +80,7 @@ const SetUpStep = ({step}) => {
     
     
   return (
-    <div className= {`form container ${stepFormat[step]?.className}`}>
+    <div className="layout"id= {`form container ${stepFormat[step]?.className}`}>
         <h1 id='title'>{stepFormat[step]?.title}</h1>
         <p className="paragraph" id={`${stepFormat[step].className}-para`}>{stepFormat[step]?.paragraph}</p>
 
