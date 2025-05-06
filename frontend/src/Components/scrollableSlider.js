@@ -32,7 +32,7 @@ const ScrollableSlider = ({ min, max, interval, unit }) => {
   return (
     <div className="slider-container">
       <p className="slider-value">
-        {selectedValue} {unit}
+        {selectedValue} <span className="unit">{unit}</span>
       </p>
       <div className="arrow-indicator">▲</div>
       
