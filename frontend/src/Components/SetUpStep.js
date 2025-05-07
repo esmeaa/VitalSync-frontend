@@ -5,6 +5,7 @@ import male from "../images/male.svg";
 import nutrition from "../images/Nutrition.png";
 import exercise from "../images/exercise.png";
 import ScrollableSlider from './scrollableSlider';
+import AgeSlider from "./ageSlider";
 
 
 
@@ -17,6 +18,7 @@ const SetUpStep = ({step}) => {
         ethnicity:"",
         goal:"",
     });
+    const [selectedOption, setSelectedOption] = useState(null);
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -39,11 +41,11 @@ const SetUpStep = ({step}) => {
             paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             type: "number", 
             className: "age-step",
-            min:0,
-            max:100,
+            min:18,
+            max:22,
             interval:1,
             unit:"",
-            displayType: "slider"
+            displayType: "slider-age"
         }, 
         height: { 
             title: "What Is Your Height?", 
@@ -52,7 +54,7 @@ const SetUpStep = ({step}) => {
             unit: "cm", 
             className: "height-step", 
             min:140,
-            max:200,
+            max:190,
             interval:1,
             displayType: "slider"
         }, 
@@ -62,8 +64,8 @@ const SetUpStep = ({step}) => {
             type: "number", 
             unit: "kg", 
             className: "weight-step", 
-            min:140,
-            max:200,
+            min:40,
+            max:90,
             interval:1,
             displayType: "slider"
         }, 
@@ -89,7 +91,6 @@ const SetUpStep = ({step}) => {
     <div className="layout" id= {`form container ${stepFormat[step]?.className}`}>
         <h1 id='title'>{stepFormat[step]?.title}</h1>
         <p className="paragraph" id={`${stepFormat[step].className}-para`}>{stepFormat[step]?.paragraph}</p>
-
         <form>
         {(() => {
     switch (stepFormat[step]?.displayType) {
@@ -97,8 +98,17 @@ const SetUpStep = ({step}) => {
         return (
           <div className="options">
             {stepFormat[step].options.map((option) => (
-              <div className="option" key={option.optionName}>
-                <button className="option-button">
+              <div className={`option ${selectedOption === option.optionName ? "option-selected" : ""}`}
+                  key={option.optionName}>
+                <button className="option-button" 
+                onClick={() => {
+                  console.log("button selected");
+                  if (selectedOption === option.optionName) {
+                    setSelectedOption(null); // Deselect
+                  } else {
+                    setSelectedOption(option.optionName); // Select new
+                  }
+                }}>
                   {option.icon && <img src={option.icon} alt={option.optionName} id="icon" />}
                 </button>
                 <p className="button-caption">{option.optionName}</p>
@@ -116,6 +126,15 @@ const SetUpStep = ({step}) => {
             unit={stepFormat[step].unit}
           />
         );
+        case "slider-age":
+          return (
+            <AgeSlider
+              min={stepFormat[step].min}
+              max={stepFormat[step].max}
+              interval={stepFormat[step].interval}
+              unit={stepFormat[step].unit}
+            />
+          );
 
       case "dropdown":
         return (
@@ -124,10 +143,11 @@ const SetUpStep = ({step}) => {
             value={formData[step]}
             onChange={handleChange}
             required
+            className='dropdown'
           >
             <option value="" disabled>Select an option</option>
             {stepFormat[step].options.map((option) => (
-              <option key={option.optionName} value={option.optionName}>
+              <option className="dropdown-option" key={option.optionName} value={option.optionName}>
                 {option.optionName}
               </option>
             ))}
