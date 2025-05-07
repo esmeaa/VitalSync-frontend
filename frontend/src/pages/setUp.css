@@ -37,7 +37,6 @@ transition: background-color 0.3s ease, transform 0.3s ease;
 
  .continue:hover{
     background-color:  #939292eb;
-    border-width: 5px;
     transform: scale(1.1);
 
  }

@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./scrollableSlider.css"; 
+import "./ageSlider.css"; // Import the CSS for styling
 
-const ScrollableSlider = ({ min, max, interval, unit }) => {
-  const [selectedValue, setSelectedValue] = useState(min);
+const AgeSlider = ({ min, max, interval, unit }) => {
+  const [selectedValue, setSelectedValue] = useState((min + max) / 2);
   const sliderRef = useRef(null);
 
   const generateNumbers = () => {
@@ -16,7 +16,8 @@ const ScrollableSlider = ({ min, max, interval, unit }) => {
   const handleScroll = () => {
     if (sliderRef.current) {
       const scrollX = sliderRef.current.scrollLeft;
-      const index = Math.round(scrollX / 60); // Adjust based on item width
+      const itemWidth = 100;
+      const index = Math.round(scrollX / itemWidth); // Adjust based on item width
       const newValue = generateNumbers()[index] || selectedValue;
       setSelectedValue(newValue);
     }
@@ -25,7 +26,8 @@ const ScrollableSlider = ({ min, max, interval, unit }) => {
   useEffect(() => {
     if (sliderRef.current) {
       const initialIndex = generateNumbers().indexOf(selectedValue);
-      sliderRef.current.scrollLeft = initialIndex * 60; // Adjust for width
+      const itemWidth = 100; 
+      sliderRef.current.scrollLeft = initialIndex * itemWidth; // Adjust for width
     }
   }, []);
 
@@ -61,6 +63,6 @@ const ScrollableSlider = ({ min, max, interval, unit }) => {
     </div>
   );
 };
-console.log("ScrollableSlider is rendering");
+console.log("ageSlider is rendering");
 
-export default ScrollableSlider;
+export default AgeSlider;
