@@ -3,18 +3,13 @@ import { Routes, Route, Link} from 'react-router-dom';
 import SetUp from './pages/setUp';
 import Launch from './pages/launch';
 import AuthPage from './pages/AuthPage';
-<<<<<<< HEAD
 import ProfilePage from './pages/ProfilePage';
 import EditProfilePage from './pages/EditProfilePage';
-=======
-import ProfilePage from './pages/profilepage';
->>>>>>> b6d461940be1b9a88a87fe08bd5420d7eeed5d5a
 
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
-      <EditProfilePage />
+
 =======
        {/* Navigation */}
        <nav>
