@@ -29,7 +29,6 @@ function App() {
        <Route path="/AuthPage" element={<AuthPage /> }/>
        <Route path="/ProfilePage" element={<ProfilePage /> }/>
 	    </Routes>
->>>>>>> b6d461940be1b9a88a87fe08bd5420d7eeed5d5a
       
     </div>
   );
