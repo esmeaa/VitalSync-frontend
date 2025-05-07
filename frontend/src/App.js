@@ -10,7 +10,6 @@ function App() {
   return (
     <div className="App">
 
-=======
        {/* Navigation */}
        <nav>
         <ul style={{ display: 'flex', listStyle: 'none', gap: '1rem', padding: 0 }}>
@@ -18,6 +17,8 @@ function App() {
           <li><Link to="/launch" className="nav-link">Go to Launch</Link></li>
           <li><Link to="/AuthPage" className="nav-link">Go to AuthPage</Link></li>
           <li><Link to="/ProfilePage" className="nav-link">Go to ProfilePage</Link></li>
+          <li><Link to="/EditProfilePage" className="nav-link">Go to EditProfilePage</Link></li>
+
 
         </ul>
 
@@ -28,6 +29,7 @@ function App() {
 	     <Route path="/launch" element={<Launch /> }/>
        <Route path="/AuthPage" element={<AuthPage /> }/>
        <Route path="/ProfilePage" element={<ProfilePage /> }/>
+       <Route path="/EditProfilePage" element={<EditProfilePage /> }/>
 	    </Routes>
       
     </div>
