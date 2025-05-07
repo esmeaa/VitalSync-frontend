@@ -23,7 +23,7 @@ const SetUp = () => {
 
   return (
     <div>
-        
+       
         <SetUpStep step = {step}/>
         
         <button className = "back" onClick={prevStep} disabled = {step === "gender"}>
