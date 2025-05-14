@@ -6,6 +6,8 @@ import AuthPage from './pages/AuthPage';
 import ProfilePage from './pages/profilepage';
 import EditProfilePage from './pages/EditProfilePage';
 import MealPlans from './pages/MealPlans';
+import HomePage from './pages/HomePage';
+
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <li><Link to="/ProfilePage" className="nav-link">Go to ProfilePage</Link></li>
           <li><Link to="/EditProfilePage" className="nav-link">Go to EditProfilePage</Link></li>
           <li><Link to="/MealPlans" className="nav-link">Go to MealPlans</Link></li>
+          <li><Link to="/Home" className="nav-link">Go to Home</Link></li>
+     
 
 
         </ul>
@@ -28,13 +32,14 @@ function App() {
 
       <Routes>
       <Route path="/" element={<Launch />} />
-      
+
 	     <Route path="/setUp" element={<SetUp />} />
 	     <Route path="/launch" element={<Launch /> }/>
        <Route path="/AuthPage" element={<AuthPage /> }/>
        <Route path="/ProfilePage" element={<ProfilePage /> }/>
        <Route path="/EditProfilePage" element={<EditProfilePage /> }/>
        <Route path="/MealPlans" element={<MealPlans /> }/>
+       <Route path="/Home" element={<HomePage /> }/>
 	    </Routes>
       
     </div>

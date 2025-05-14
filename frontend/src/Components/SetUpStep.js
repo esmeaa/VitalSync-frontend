@@ -7,7 +7,7 @@ import exercise from "../images/exercise.png";
 import ScrollableSlider from './scrollableSlider';
 import AgeSlider from "./ageSlider";
 
-
+//
 
 const SetUpStep = ({step, value, onChange}) => {
   
