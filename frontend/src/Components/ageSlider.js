@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./ageSlider.css"; // Import the CSS for styling
 
-const AgeSlider = ({ min, max, interval, unit }) => {
+const AgeSlider = ({ min, max, interval, unit, onChange}) => {
   const [selectedValue, setSelectedValue] = useState((min + max) / 2);
   const sliderRef = useRef(null);
 
@@ -20,6 +20,7 @@ const AgeSlider = ({ min, max, interval, unit }) => {
       const index = Math.round(scrollX / itemWidth); // Adjust based on item width
       const newValue = generateNumbers()[index] || selectedValue;
       setSelectedValue(newValue);
+      if (onChange)onChange(newValue)
     }
   };
 

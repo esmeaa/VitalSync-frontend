@@ -27,6 +27,8 @@ function App() {
       </nav>
 
       <Routes>
+      <Route path="/" element={<Launch />} />
+      
 	     <Route path="/setUp" element={<SetUp />} />
 	     <Route path="/launch" element={<Launch /> }/>
        <Route path="/AuthPage" element={<AuthPage /> }/>
