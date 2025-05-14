@@ -408,7 +408,6 @@ function EditProfile() {
           <option value="">Select</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
-          <option value="Other">Other</option>
         </select>
         {errors.gender && <p className="error-message">{errors.gender}</p>}
 
@@ -454,14 +453,20 @@ function EditProfile() {
         {errors.weight && <p className="error-message">{errors.weight}</p>}
 
         <label>Ethnicity</label>
-        <input
-          type="text"
+
+        <select
           name="ethnicity"
           value={formData.ethnicity}
           onChange={handleChange}
           className={errors.ethnicity ? "error" : ""}
-        />
-        {errors.ethnicity && <p className="error-message">{errors.ethnicity}</p>}
+        >
+          <option value="">Select</option>
+          <option value="Black, African, Caribbean Or Black British">Black, African, Caribbean Or Black British</option>
+          <option value="Asian Or Asian British">Asian Or Asian British</option>
+          <option value="Middle Eastern">Middle Eastern</option>
+          <option value="White">White</option>
+        </select>
+
 
         <button type="submit">Update Profile</button>
       </form>
