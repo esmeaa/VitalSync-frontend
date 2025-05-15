@@ -53,6 +53,7 @@ import EditProfilePage from './pages/EditProfilePage';
 import MealPlans from './pages/MealPlans';
 import RegisterPage from './pages/RegisterPage';
 import Home from './pages/Home';
+import GroupsPage from './pages/GroupsPage';
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
         <Route path="/MealPlans" element={<MealPlans />} />
         <Route path="/Register" element={<RegisterPage />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/GroupsPage" element={<GroupsPage /> }/>
 
 
       </Routes>
