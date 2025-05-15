@@ -228,254 +228,184 @@
 //   );
 // }
 
-// export default EditProfile;
+import React, { useState, useEffect } from "react";
 
-import React, { useState } from "react";
-import profilePic from '../images/profile_pic.jpg';
-import editIcon from '../images/edit_icon.png';
-import homeIcon from '../images/Home.png';
-import fileIcon from '../images/exercise.png';
-import starIcon from '../images/favourites.png';
-import supportIcon from '../images/help.png';
-import "../pages/AuthPage.css";
+const EditProfile = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [gender, setGender] = useState("");
+  const [age, setAge] = useState("");
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
+  const [ethnicity, setEthnicity] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-function EditProfile() {
-  const [formData, setFormData] = useState({
-    first_name: "Aysha",
-    last_name: "Rehman",
-    user_name: "aysha@gmail.com",
-    gender: "",
-    age: "",
-    height: "",
-    weight: "",
-    ethnicity: ""
-  });
+  const handleLogin = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user_name: username, user_password: password }),
+      });
 
-  const [errors, setErrors] = useState({});
+      const data = await response.json();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-
-    if (errors[name]) {
-      setErrors({ ...errors, [name]: "" });
+      if (response.ok) {
+        setIsAuthenticated(true);
+        alert("Login successful! You can now update your profile.");
+      } else {
+        setErrorMessage(data.message || "Login failed. Please check your credentials.");
+      }
+    } catch (err) {
+      console.error("Error logging in:", err);
+      setErrorMessage("Error logging in.");
     }
   };
-
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!formData.first_name) newErrors.first_name = "First name is required";
-    if (!formData.last_name) newErrors.last_name = "Last name is required";
-    if (!formData.user_name) newErrors.user_name = "Username is required";
-    if (!formData.gender) newErrors.gender = "Gender is required";
-
-    const ageNum = parseInt(formData.age);
-    if (!formData.age || isNaN(ageNum) || ageNum < 18 || ageNum > 24) {
-      newErrors.age = "Age must be between 18 and 24";
-    }
-
-    if (!/^\d+(\.\d+)?$/.test(formData.height)) {
-      newErrors.height = "Enter valid height in centimeters (e.g. 165)";
-    }
-
-    if (!/^[0-9]{1,3}$/.test(formData.weight)) {
-      newErrors.weight = "Enter weight in kilograms";
-    }
-
-    if (!formData.ethnicity) newErrors.ethnicity = "Ethnicity is required";
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   if (!validateForm()) return;
-
-  //   const API_URL = "http://localhost:3001/api/editprofile";
-
-  //   // Ensure numeric fields are sent as numbers
-  //   const payload = {
-  //     ...formData,
-  //     age: Number(formData.age),
-  //     height: Number(formData.height),
-  //     weight: Number(formData.weight)
-  //   };
-
-  //   try {
-  //     const response = await fetch(API_URL, {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(payload)
-  //     });
-
-  //     const data = await response.json(); // ✅ Only call this ONCE
-  //     console.log("✅ Profile updated:", data);
-
-  //     if (response.ok) {
-  //       alert("Profile updated successfully!");
-  //     } else {
-  //       alert(`Update failed: ${data.message}`);
-  //     }
-  //   } catch (error) {
-  //     console.error("❌ Error saving profile:", error);
-  //     alert("Failed to update profile.");
-  //   }
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
 
-    const user_name = localStorage.getItem("user_name"); // ✅ retrieve
+    if (!isAuthenticated) {
+      alert("You need to log in first.");
+      return;
+    }
+
+    const updatedProfile = {
+      user_name: username,
+      first_name: firstName,
+      last_name: lastName,
+      gender: gender,
+      age: age,
+      height: height,
+      weight: weight,
+      ethnicity: ethnicity,
+    };
 
     try {
       const response = await fetch("http://localhost:3001/api/editprofile", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, user_name }) // 🧠 add it to body
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedProfile),
       });
 
       const data = await response.json();
-      console.log("✅ Profile updated:", data);
-      alert("Profile updated successfully!");
-    } catch (error) {
-      console.error("❌ Error saving profile:", error);
-      alert("Failed to update profile.");
+
+      if (response.ok) {
+        alert("Profile updated successfully");
+      } else {
+        alert(data.message || "Error updating profile");
+      }
+    } catch (err) {
+      console.error("Error updating profile:", err);
+      alert("Error updating profile");
     }
   };
-  
-  
+
   return (
-    <div className="profile-container">
-      <header className="profile-header">
-        <h2>My Profile</h2>
-      </header>
-
-      <div className="profile-top">
-        <div className="edit-pic-wrapper">
-          <img src={profilePic} alt="Profile" className="profile-image" />
-          <img src={editIcon} alt="Edit" className="edit-icon" />
+    <div>
+      {!isAuthenticated ? (
+        <div>
+          <h2>Please log in to make changes to your existing profile.</h2>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <div>
+              <label>Username:</label>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label>Password:</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <button type="button" onClick={handleLogin}>
+              Login
+            </button>
+          </form>
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </div>
-        <h3>{formData.first_name} {formData.last_name}</h3>
-        <p className="profile-email">@{formData.user_name}</p>
-        <p className="profile-birthday">Age: {formData.age}</p>
-      </div>
-
-      <form className="edit-form" onSubmit={handleSubmit}>
-        <label>First Name</label>
-        <input
-          type="text"
-          name="first_name"
-          value={formData.first_name}
-          onChange={handleChange}
-          className={errors.first_name ? "error" : ""}
-        />
-        {errors.first_name && <p className="error-message">{errors.first_name}</p>}
-
-        <label>Last Name</label>
-        <input
-          type="text"
-          name="last_name"
-          value={formData.last_name}
-          onChange={handleChange}
-          className={errors.last_name ? "error" : ""}
-        />
-        {errors.last_name && <p className="error-message">{errors.last_name}</p>}
-
-        <label>Username</label>
-        <input
-          type="text"
-          name="user_name"
-          value={formData.user_name}
-          onChange={handleChange}
-          className={errors.user_name ? "error" : ""}
-        />
-        {errors.user_name && <p className="error-message">{errors.user_name}</p>}
-
-        <label>Gender</label>
-        <select
-          name="gender"
-          value={formData.gender}
-          onChange={handleChange}
-          className={errors.gender ? "error" : ""}
-        >
-          <option value="">Select</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-        </select>
-        {errors.gender && <p className="error-message">{errors.gender}</p>}
-
-        {/* <label>Age</label>
-        <input
-          type="number"
-          name="age"
-          value={formData.age}
-          onChange={handleChange}
-          className={errors.age ? "error" : ""}
-        />
-        {errors.age && <p className="error-message">{errors.age}</p>} */}
-
-          <input
-          type="number"
-          name="age"
-          value={formData.age}
-          onChange={handleChange}
-          className={errors.age ? "error" : ""}
-          min="18"
-          max="24"
-        />
-
-
-        <label>Height (cm)</label>
-        <input
-          type="text"
-          name="height"
-          value={formData.height}
-          onChange={handleChange}
-          className={errors.height ? "error" : ""}
-        />
-        {errors.height && <p className="error-message">{errors.height}</p>}
-
-        <label>Weight (kg)</label>
-        <input
-          type="text"
-          name="weight"
-          value={formData.weight}
-          onChange={handleChange}
-          className={errors.weight ? "error" : ""}
-        />
-        {errors.weight && <p className="error-message">{errors.weight}</p>}
-
-        <label>Ethnicity</label>
-        <input
-          type="text"
-          name="ethnicity"
-          value={formData.ethnicity}
-          onChange={handleChange}
-          className={errors.ethnicity ? "error" : ""}
-        />
-        {errors.ethnicity && <p className="error-message">{errors.ethnicity}</p>}
-
-        <button type="submit">Update Profile</button>
-      </form>
-
-      <footer className="profile-footer">
-        <div className="footer-icon"><img src={homeIcon} alt="Home" className="icon-img" /></div>
-        <div className="footer-icon"><img src={fileIcon} alt="File" className="icon-img" /></div>
-        <div className="footer-icon"><img src={starIcon} alt="Star" className="icon-img" /></div>
-        <div className="footer-icon"><img src={supportIcon} alt="Support" className="icon-img" /></div>
-      </footer>
+      ) : (
+        <div>
+          <h2>Edit Profile</h2>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label>First Name:</label>
+              <input
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label>Last Name:</label>
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label>Gender:</label>
+              <input
+                type="text"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Age:</label>
+              <input
+                type="number"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Height (in cm):</label>
+              <input
+                type="number"
+                value={height}
+                onChange={(e) => setHeight(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Weight (in kg):</label>
+              <input
+                type="number"
+                value={weight}
+                onChange={(e) => setWeight(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Ethnicity:</label>
+              <input
+                type="text"
+                value={ethnicity}
+                onChange={(e) => setEthnicity(e.target.value)}
+              />
+            </div>
+            <button type="submit">Update Profile</button>
+          </form>
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default EditProfile;
-
-

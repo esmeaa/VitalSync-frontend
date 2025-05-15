@@ -1,4 +1,4 @@
-@import './ProfilePage.css';
+/* @import './ProfilePage.css';
 
 .edit-pic-wrapper {
   position: relative;
@@ -52,4 +52,91 @@
 
 .edit-form button:hover {
   background-color: #d1e44f;
+} */
+
+:root {
+  --white: #ffffff;
+  --black: #232323;
+  --lime-green: #E2F163;
+  --purple: #896CFE;
+  --light-purple: #B3A0FF;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.edit-profile-wrapper {
+  max-width: 480px;
+  margin: 40px auto;
+  background-color: var(--black);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  padding: 30px 40px;
+}
+
+.edit-profile-wrapper h1,
+.edit-profile-wrapper h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: var(--light-purple);
+}
+
+form>div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--purple);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+  padding: 10px 14px;
+  border: 1.5px solid var(--light-purple);
+  border-radius: 8px;
+  background-color: var(--black);
+  color: var(--white);
+  font-size: 15px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--lime-green);
+}
+
+button {
+  background-color: var(--purple);
+  color: var(--white);
+  border: none;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 8px;
+  font-weight: 700;
+}
+
+button:hover {
+  background-color: var(--lime-green);
+  color: var(--black);
+}
+
+.error-message {
+  color: #ff4d4d;
+  text-align: center;
+  margin-top: 10px;
 }

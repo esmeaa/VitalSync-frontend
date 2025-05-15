@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import "./setUpStep.css"
 import female from "../images/female.svg";
 import male from "../images/male.svg";
-import nutrition from "../images/Nutrition.png";
-import exercise from "../images/exercise.png";
+// import nutrition from "../images/Nutrition.png";
+// import exercise from "../images/exercise.png";
 import ScrollableSlider from './scrollableSlider';
 import AgeSlider from "./ageSlider";
 
@@ -31,25 +31,25 @@ const SetUpStep = ({step}) => {
     const stepFormat = {
         gender: {
             title: "What's Your Gender?",
-            paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            // paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             options:[{optionName: "Male", icon: male},{optionName: "Female", icon: female}],
             className: "gender-step",
             displayType: "option-buttons"
         },
         age: {
             title: "How Old Are You?",
-            paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            // paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             type: "number", 
             className: "age-step",
             min:18,
-            max:22,
+            max:24,
             interval:1,
             unit:"",
             displayType: "slider-age"
         }, 
         height: { 
-            title: "What Is Your Height?", 
-            paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            title: "What's Your Height?", 
+            // paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             type: "number", 
             unit: "cm", 
             className: "height-step", 
@@ -59,8 +59,8 @@ const SetUpStep = ({step}) => {
             displayType: "slider"
         }, 
         weight: { 
-            title: "What is Your Weight?", 
-            paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            title: "What's Your Weight?", 
+            // paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             type: "number", 
             unit: "kg", 
             className: "weight-step", 
@@ -70,19 +70,19 @@ const SetUpStep = ({step}) => {
             displayType: "slider"
         }, 
         ethnicity: { 
-            title: "What Is Your Ethnic Origin?", 
-            paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            title: "What's Your Ethnic Origin?", 
+            // paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             options: [{optionName: "Black, African, Caribbean Or Black British" }, {optionName: "Asian Or Asian British"}, {optionName: "Middle Eastern"}, {optionName: "White"}], 
             className: "ethnicity-step", 
             displayType: "dropdown"
         },
-        goal: {
-            title: "What Is Your Main Goal?", 
-            paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            options: [{optionName: "Diet" ,icon: nutrition}, {optionName:"Exercise", icon: exercise }], 
-            className: "goal-step",
-            displayType: "option-buttons"
-        },
+        // goal: {
+        //     title: "What Is Your Main Goal?", 
+        //     paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        //     options: [{optionName: "Diet" ,icon: nutrition}, {optionName:"Exercise", icon: exercise }], 
+        //     className: "goal-step",
+        //     displayType: "option-buttons"
+        // },
         };
     
     
@@ -179,3 +179,4 @@ const SetUpStep = ({step}) => {
 }
 
 export default SetUpStep;
+
