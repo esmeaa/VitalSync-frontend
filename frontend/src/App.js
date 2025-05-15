@@ -51,24 +51,35 @@ import AuthPage from './pages/AuthPage';
 import ProfilePage from './pages/profilepage';
 import EditProfilePage from './pages/EditProfilePage';
 import MealPlans from './pages/MealPlans';
-import RegisterPage from './pages/RegisterPage';
-
 
 function App() {
   return (
     <div className="App">
-      <Navbar /> {/* Include the Navbar at the top */}
-      <Routes>
-        <Route path="/" element={<Launch />} />
-        <Route path="/setUp" element={<SetUp />} />
-        <Route path="/launch" element={<Launch />} />
-        <Route path="/AuthPage" element={<AuthPage />} />
-        <Route path="/ProfilePage" element={<ProfilePage />} />
-        <Route path="/EditProfilePage" element={<EditProfilePage />} />
-        <Route path="/MealPlans" element={<MealPlans />} />
-        <Route path="/Register" element={<RegisterPage />} />
 
-      </Routes>
+       {/* Navigation */}
+       <nav>
+        <ul style={{ display: 'flex', listStyle: 'none', gap: '1rem', padding: 0 }}>
+          <li><Link to="/setUp" className="nav-link">Go to SetUp</Link></li>
+          <li><Link to="/launch" className="nav-link">Go to Launch</Link></li>
+          <li><Link to="/AuthPage" className="nav-link">Go to AuthPage</Link></li>
+          <li><Link to="/ProfilePage" className="nav-link">Go to ProfilePage</Link></li>
+          <li><Link to="/EditProfilePage" className="nav-link">Go to EditProfilePage</Link></li>
+          <li><Link to="/MealPlans" className="nav-link">Go to MealPlans</Link></li>
+
+
+        </ul>
+
+      </nav>
+
+      <Routes>
+	     <Route path="/setUp" element={<SetUp />} />
+	     <Route path="/launch" element={<Launch /> }/>
+       <Route path="/AuthPage" element={<AuthPage /> }/>
+       <Route path="/ProfilePage" element={<ProfilePage /> }/>
+       <Route path="/EditProfilePage" element={<EditProfilePage /> }/>
+       <Route path="/MealPlans" element={<MealPlans /> }/>
+	    </Routes>
+      
     </div>
   );
 }

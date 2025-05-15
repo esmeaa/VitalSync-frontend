@@ -338,72 +338,116 @@ const EditProfile = () => {
           </form>
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </div>
-      ) : (
-        <div>
-          <h2>Edit Profile</h2>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label>First Name:</label>
-              <input
-                type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label>Last Name:</label>
-              <input
-                type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label>Gender:</label>
-              <input
-                type="text"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Age:</label>
-              <input
-                type="number"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Height (in cm):</label>
-              <input
-                type="number"
-                value={height}
-                onChange={(e) => setHeight(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Weight (in kg):</label>
-              <input
-                type="number"
-                value={weight}
-                onChange={(e) => setWeight(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Ethnicity:</label>
-              <input
-                type="text"
-                value={ethnicity}
-                onChange={(e) => setEthnicity(e.target.value)}
-              />
-            </div>
-            <button type="submit">Update Profile</button>
-          </form>
-        </div>
-      )}
+        <h3>{formData.first_name} {formData.last_name}</h3>
+        <p className="profile-email">@{formData.user_name}</p>
+        <p className="profile-birthday">Age: {formData.age}</p>
+      </div>
+
+      <form className="edit-form" onSubmit={handleSubmit}>
+        <label>First Name</label>
+        <input
+          type="text"
+          name="first_name"
+          value={formData.first_name}
+          onChange={handleChange}
+          className={errors.first_name ? "error" : ""}
+        />
+        {errors.first_name && <p className="error-message">{errors.first_name}</p>}
+
+        <label>Last Name</label>
+        <input
+          type="text"
+          name="last_name"
+          value={formData.last_name}
+          onChange={handleChange}
+          className={errors.last_name ? "error" : ""}
+        />
+        {errors.last_name && <p className="error-message">{errors.last_name}</p>}
+
+        <label>Username</label>
+        <input
+          type="text"
+          name="user_name"
+          value={formData.user_name}
+          onChange={handleChange}
+          className={errors.user_name ? "error" : ""}
+        />
+        {errors.user_name && <p className="error-message">{errors.user_name}</p>}
+
+        <label>Gender</label>
+        <select
+          name="gender"
+          value={formData.gender}
+          onChange={handleChange}
+          className={errors.gender ? "error" : ""}
+        >
+          <option value="">Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        {errors.gender && <p className="error-message">{errors.gender}</p>}
+
+        {/* <label>Age</label>
+        <input
+          type="number"
+          name="age"
+          value={formData.age}
+          onChange={handleChange}
+          className={errors.age ? "error" : ""}
+        />
+        {errors.age && <p className="error-message">{errors.age}</p>} */}
+
+          <input
+          type="number"
+          name="age"
+          value={formData.age}
+          onChange={handleChange}
+          className={errors.age ? "error" : ""}
+          min="18"
+          max="24"
+        />
+
+
+        <label>Height (cm)</label>
+        <input
+          type="text"
+          name="height"
+          value={formData.height}
+          onChange={handleChange}
+          className={errors.height ? "error" : ""}
+        />
+        {errors.height && <p className="error-message">{errors.height}</p>}
+
+        <label>Weight (kg)</label>
+        <input
+          type="text"
+          name="weight"
+          value={formData.weight}
+          onChange={handleChange}
+          className={errors.weight ? "error" : ""}
+        />
+        {errors.weight && <p className="error-message">{errors.weight}</p>}
+
+        <label>Ethnicity</label>
+        <input
+          type="text"
+          name="ethnicity"
+          value={formData.ethnicity}
+          onChange={handleChange}
+          className={errors.ethnicity ? "error" : ""}
+        />
+        {errors.ethnicity && <p className="error-message">{errors.ethnicity}</p>}
+
+        <button type="submit">Update Profile</button>
+      </form>
+
+      <footer className="profile-footer">
+        <div className="footer-icon"><img src={homeIcon} alt="Home" className="icon-img" /></div>
+        <div className="footer-icon"><img src={fileIcon} alt="File" className="icon-img" /></div>
+        <div className="footer-icon"><img src={starIcon} alt="Star" className="icon-img" /></div>
+        <div className="footer-icon"><img src={supportIcon} alt="Support" className="icon-img" /></div>
+      </footer>
     </div>
   );
 };
