@@ -90,6 +90,7 @@
 
 import React, { useState } from "react";
 import "./AuthPage.css";
+import { useNavigate } from "react-router-dom";
 
 const calculateStrength = (password) => {
     if (!password) return 0;
@@ -138,6 +139,8 @@ const RegisterPage = () => {
     });
 
     const [error, setError] = useState("");
+    const navigate = useNavigate();
+
 
     const validateForm = () => {
         if (formData.password.length < 4) {
@@ -181,7 +184,7 @@ const RegisterPage = () => {
 
             const data = await response.json();
             alert(data.message || `Account created for ${formData.username}`);
-            window.location.href = "/AuthPage"; // Redirect to login page
+            navigate("/setUp");// Redirect to login page
         } catch (err) {
             setError(err.message);
         }

@@ -27,7 +27,7 @@ body {
   padding: 2rem;
   background-color: #1a1a1a;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(128, 0, 128, 0.3);
+  box-shadow: 0 0 15px hsla(267, 65%, 56%, 0.3);
 }
 
 /* Hero Column (hidden) */
@@ -63,7 +63,7 @@ body {
   background-color: #1f1f1f;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(128, 0, 128, 0.2);
+  box-shadow: 0 4px 12px hsla(267, 65%, 56%, 0.3);
 }
 
 /* Heading */
