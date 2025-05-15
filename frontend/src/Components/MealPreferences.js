@@ -39,7 +39,7 @@ const MealPreferences = ({ onNext, onBack }) => {
     }
 
     // Passes collected data to MealPlans.js
-    onNext({ ...selected, allergies: fullAllergies });
+    onNext({ ...selected });
   };
 
   return (
