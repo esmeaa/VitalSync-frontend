@@ -14,7 +14,6 @@ const MealPreferences = ({ onNext, onBack }) => {
     allergies: [],
     types: []
   });
-  const [otherAllergy, setOtherAllergy] = useState("");
   const [errors, setErrors] = useState({});
 
   const toggleSelect = (category, value) => {
@@ -30,7 +29,7 @@ const MealPreferences = ({ onNext, onBack }) => {
   const handleNext = () => {
     const newErrors = {};
     if (selected.preferences.length === 0) newErrors.preferences = "Select at least one dietary preference.";
-    if (selected.allergies.length === 0 && !otherAllergy.trim()) newErrors.allergies = "Select at least one allergy option or fill 'Other'.";
+    if (selected.allergies.length === 0) newErrors.allergies = "Select at least one allergy option.";
     if (selected.types.length === 0) newErrors.types = "Select at least one meal type.";
 
     if (Object.keys(newErrors).length > 0) {
@@ -72,13 +71,6 @@ const MealPreferences = ({ onNext, onBack }) => {
             </label>
           ))}
         </div>
-        <input
-          type="text"
-          className="other-input"
-          placeholder="Other allergies..."
-          value={otherAllergy}
-          onChange={(e) => setOtherAllergy(e.target.value)}
-        />
       </div>
 
       <div className="form-section">
