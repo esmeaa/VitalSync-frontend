@@ -38,9 +38,6 @@ const MealPreferences = ({ onNext, onBack }) => {
       return;
     }
 
-    const fullAllergies = [...selected.allergies];
-    if (otherAllergy.trim()) fullAllergies.push(otherAllergy.trim());
-
     // Passes collected data to MealPlans.js
     onNext({ ...selected, allergies: fullAllergies });
   };
