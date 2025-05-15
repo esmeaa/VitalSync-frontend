@@ -130,6 +130,8 @@ app.post("/api/register", async (req, res) => {
             [firstName, lastName, username, password]
         );
 
+        res.status(200).json({ message: "Account created" });
+
     } catch (err) {
         console.error("Error checking username:", err);
         return res.status(500).json({ error: "Internal server error" });
@@ -168,7 +170,7 @@ app.post('/api/editprofile', async (req, res) => {
 });
 
 // Endpoint to receive user setup data and insert into DB
-app.post('/api/setup', async (req, res) => {
+app.post('/api/setUp', async (req, res) => {
     try {
         const { first_name, last_name, user_name, user_password, gender, age, height, weight, ethnicity } = req.body;
 
