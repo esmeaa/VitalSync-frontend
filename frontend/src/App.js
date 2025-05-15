@@ -49,7 +49,7 @@ import Navbar from './Navbar'; // Import the Navbar
 import SetUp from './pages/setUp';
 import Launch from './pages/launch';
 import AuthPage from './pages/AuthPage';
-import ProfilePage from './pages/ProfilePage';
+import ProfilePage from './pages/profilePage';
 import EditProfilePage from './pages/EditProfilePage';
 import MealPlans from './pages/MealPlans';
 import GroupsPage from './pages/GroupsPage'; 
