@@ -51,6 +51,8 @@ import AuthPage from './pages/AuthPage';
 import ProfilePage from './pages/profilepage';
 import EditProfilePage from './pages/EditProfilePage';
 import MealPlans from './pages/MealPlans';
+import { Link } from 'react-router-dom';
+
 
 function App() {
   return (
