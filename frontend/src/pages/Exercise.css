@@ -1,0 +1,152 @@
+.exercise-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    color: #232323;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .exercise-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .exercise-form input,
+  .exercise-form select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #B3A0FF;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: #232323;
+  }
+  
+  .exercise-form button {
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #896CFE;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .exercise-form button:hover {
+    background-color: #B3A0FF;
+  }
+  
+  .exercise-history {
+    margin-top: 30px;
+  }
+  
+  .exercise-history ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .exercise-history li {
+    padding: 10px;
+    border-bottom: 1px solid #FB5959;
+    background-color: #F9F9FF;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .goal-actions {
+    margin-top: 8px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .goal-actions button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .goal-actions .delete-button {
+    background-color: #FB5959;
+    color: #232323;
+  }
+ 
+  .exercise-intro {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+  }
+  
+  .exercise-intro::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../images/exerciseBackground.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.7);
+    z-index: 0;
+  }
+  
+  .exercise-intro-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background-color: rgba(178, 119, 241, 0.9);
+    padding: 24px 20px;
+    border-radius: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 360px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    animation: fadeIn 0.8s ease-in-out both;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -40%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #fff;
+  }
+  
+  .section-desc {
+    font-size: 0.9rem;
+    color: #eee;
+    margin-bottom: 16px;
+  }
+  
+  .primary-btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 16px;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: #e94560;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
