@@ -16,7 +16,7 @@ const Exercise = () => {
       duration,
       distance,
       date,
-      user_name: localStorage.getItem('user_name'), // Assuming you store the username in localStorage
+      user_name: localStorage.getItem('user_name'), 
     };
     try {
       const response = await fetch("http://localhost:3001/api/exercises", {
@@ -45,7 +45,7 @@ const Exercise = () => {
         <div className="exercise-intro">
           <div className="exercise-intro-overlay">
             <h2 className="section-title">Log Your Exercises</h2>
-            <p className="section-desc">Track distance, time, and activity type</p>
+            <p className="section-desc">Type of Exercise, Duration, Distance</p>
             <button className="primary-btn" onClick={() => setShowMainContent(true)}>
               Get Started
             </button>
@@ -77,12 +77,12 @@ const Exercise = () => {
             {lastAdded && (
               <div className="exercise-card">
                 <div className="exercise-card-header">
-                  <h3>✅ Exercise Logged</h3>
+                  <h3>Exercise Logged</h3>
                 </div>
                 <div className="exercise-card-body">
                   <p><strong>{lastAdded.exerciseType}</strong></p>
-                  <p>⏱ {lastAdded.duration} min &nbsp;&nbsp; 📏 {lastAdded.distance} km</p>
-                  <p>📅 {lastAdded.date}</p>
+                  <p>{lastAdded.duration} min &nbsp;&nbsp; {lastAdded.distance} km</p>
+                  <p> {lastAdded.date}</p>
                 </div>
               </div>
             )}
@@ -98,7 +98,5 @@ const Exercise = () => {
     </>
   );
 };
-
-/*hi*/
 
 export default Exercise;

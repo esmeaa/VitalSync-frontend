@@ -48,9 +48,13 @@ import Navbar from './Navbar'; // Import the Navbar
 import SetUp from './pages/setUp';
 import Launch from './pages/launch';
 import AuthPage from './pages/AuthPage';
+<<<<<<< HEAD
 import ProfilePage from './pages/ProfilePage';
 import EditProfilePage from './pages/EditProfilePage';
 // import MealPlans from './pages/MealPlans';    
+=======
+import EditProfilePage from './pages/EditProfilePage';  
+>>>>>>> 938701cceb5e41aa319476d023a35fe849d260c0
 import DietCapture from './pages/DietCapture'
 import RegisterPage from './pages/RegisterPage';
 import Goals from './pages/Goals';
@@ -67,7 +71,6 @@ function App() {
         <Route path="/setUp" element={<SetUp />} />
         <Route path="/launch" element={<Launch />} />
         <Route path="/AuthPage" element={<AuthPage />} />
-        <Route path="/ProfilePage" element={<ProfilePage />} />
         <Route path="/EditProfilePage" element={<EditProfilePage />} />
         <Route path="/DietCapture" element={<DietCapture />} />
         <Route path="/Register" element={<RegisterPage />} />

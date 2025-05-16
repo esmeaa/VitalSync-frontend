@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import './DietCapture.css';
 
@@ -8,6 +9,7 @@ const DietCapture = () => {
     const [customFood, setCustomFood] = useState("");
     const [calories, setCalories] = useState("");
     const [mealType, setMealType] = useState("Breakfast");
+    const [lastAddedDiet, setLastAddedDiet] = useState(null);  // New state
 
     useEffect(() => {
         fetch("http://localhost:3001/api/food-items")
@@ -29,24 +31,35 @@ const DietCapture = () => {
     };
 
     const submitLog = async () => {
-        await fetch("http://localhost:3001/api/diet-log", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                user_name: localStorage.getItem("username"),
-                food_item_id: selectedFood,
-                calories: parseInt(calories),
-                meal_type: mealType,
-            }),
-        });
-
-        alert("Log saved!");
-        setSelectedFood("");
-        setCalories("");
-        setMealType("Breakfast");
+        try {
+            const res = await fetch("http://localhost:3001/api/diet-log", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    user_name: localStorage.getItem("username"),
+                    food_item_id: selectedFood,
+                    calories: parseInt(calories),
+                    meal_type: mealType,
+                }),
+            });
+            if (res.ok) {
+                const savedLog = await res.json();
+                setLastAddedDiet(savedLog);  
+                alert("Log saved!");
+                setSelectedFood("");
+                setCalories("");
+                setMealType("Breakfast");
+            } else {
+                alert("Failed to save diet log.");
+            }
+        } catch (error) {
+            console.error("Error submitting diet log:", error);
+            alert("Error submitting diet log.");
+        }
     };
 
     return (
+<<<<<<< HEAD
         <>
             {!showMainContent ? (
                 <div className="diet-intro">
@@ -63,6 +76,12 @@ const DietCapture = () => {
                     <div className="diet-capture-box">
                         <h2>Log your Meal</h2>
                         <p className="subtitle">Register Your Meal with VitalSync!</p>
+=======
+        <div className="diet-capture">
+            <div className="diet-capture-box">
+                <h2>Log your Meal</h2>
+                <p className="subtitle">Food/Drink types, Custom items, Calories and defined set of meal types </p>
+>>>>>>> 938701cceb5e41aa319476d023a35fe849d260c0
 
                         <select value={selectedFood} onChange={e => setSelectedFood(e.target.value)}>
                             <option value="">-- Select food/drink --</option>
@@ -93,11 +112,28 @@ const DietCapture = () => {
                             <option value="Snack">Snack</option>
                         </select>
 
+<<<<<<< HEAD
                         <button onClick={submitLog}>Submit</button>
                     </div>
                 </div>
             )}
         </>
+=======
+                <button onClick={submitLog}>Submit</button>
+
+                {/* Display last added diet log */}
+                {lastAddedDiet && (
+                    <div className="diet-log-card">
+                        <h3>Last Diet Log Added</h3>
+                        <p><strong>Food:</strong> {lastAddedDiet.food_name || lastAddedDiet.food_item_id}</p>
+                        <p><strong>Calories:</strong> {lastAddedDiet.calories} kcal</p>
+                        <p><strong>Meal Type:</strong> {lastAddedDiet.meal_type}</p>
+                        <p><strong>Date:</strong> {new Date(lastAddedDiet.created_at).toLocaleString()}</p>
+                    </div>
+                )}
+            </div>
+        </div>
+>>>>>>> 938701cceb5e41aa319476d023a35fe849d260c0
     );
 };
 

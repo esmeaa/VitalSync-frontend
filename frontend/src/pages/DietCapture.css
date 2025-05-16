@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* .diet-capture-container {
     max-width: 500px;
     margin: 40px auto;
@@ -85,6 +86,22 @@
 /* Intro Screen Styles */
 .diet-intro {
     position: relative;
+=======
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #232323;
+    color: white;
+}
+
+.diet-capture {
+>>>>>>> 938701cceb5e41aa319476d023a35fe849d260c0
     display: flex;
     justify-content: center;
     align-items: center;

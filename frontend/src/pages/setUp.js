@@ -26,7 +26,6 @@ const SetUp = () => {
       if(!isLastStep){
         setStep(steps[currentIndex + 1]);
       }else{
-        //Final step: submit data 
         try{
             const response = await fetch("http://localhost:3001/api/bmi-feedback/:userId", {
                 method: 'POST',
@@ -42,7 +41,6 @@ const SetUp = () => {
             }
             const data = await response.json();
             console.log("Server Response: ", data);
-            //Redirect to show success message 
             alert("Setup completed!");
         } catch (error) {
             console.error("Submission error:", error);
