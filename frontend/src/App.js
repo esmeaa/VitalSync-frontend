@@ -48,12 +48,12 @@ import Navbar from './Navbar'; // Import the Navbar
 import SetUp from './pages/setUp';
 import Launch from './pages/launch';
 import AuthPage from './pages/AuthPage';
-import ProfilePage from './pages/profilepage';
+import ProfilePage from './pages/profilePage';
 import EditProfilePage from './pages/EditProfilePage';
 // import MealPlans from './pages/MealPlans';    
 import DietCapture from './Components/DietCapture';
 import RegisterPage from './pages/RegisterPage';
-
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -68,6 +68,7 @@ function App() {
         <Route path="/EditProfilePage" element={<EditProfilePage />} />
         <Route path="/DietCapture" element={<DietCapture />} />
         <Route path="/Register" element={<RegisterPage />} />
+        <Route path="/Home" element={<Home />} />
 
       </Routes>
     </div>
