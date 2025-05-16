@@ -43,7 +43,7 @@ const DietCapture = () => {
             });
             if (res.ok) {
                 const savedLog = await res.json();
-                setLastAddedDiet(savedLog);  // Store the returned saved log here
+                setLastAddedDiet(savedLog);  
                 alert("Log saved!");
                 setSelectedFood("");
                 setCalories("");
@@ -61,7 +61,7 @@ const DietCapture = () => {
         <div className="diet-capture">
             <div className="diet-capture-box">
                 <h2>Log your Meal</h2>
-                <p className="subtitle">Register Your Meal with VitalSync!</p>
+                <p className="subtitle">Food/Drink types, Custom items, Calories and defined set of meal types </p>
 
                 <select value={selectedFood} onChange={e => setSelectedFood(e.target.value)}>
                     <option value="">-- Select food/drink --</option>

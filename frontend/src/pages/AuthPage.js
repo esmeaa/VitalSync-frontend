@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import "./AuthPage.css";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +6,6 @@ const EXPRESS_SERVER_URL = "http://localhost:3001";
 
 function AuthPage() {
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -73,7 +71,6 @@ function AuthPage() {
 
       const data = await res.json();
       if (data.login === "success") {
-        // Store user ID in local storage 
         localStorage.setItem("user_name", formData.username);
         navigate("/ProfilePage");
       }
@@ -89,8 +86,7 @@ function AuthPage() {
         <div className="auth-form-container">
           <div className="logo-container">
             <div className="app-logo">
-              <div className="logo-icon">
-              </div>
+              <div className="logo-icon"></div>
             </div>
             <h1 className="app-title">VitalSync</h1>
             <p className="app-subtitle">Your Vitals Synced!</p>
@@ -113,7 +109,6 @@ function AuthPage() {
                       placeholder="you@example.com"
                       className={errors.username ? "error" : ""}
                     />
-                   
                   </div>
                   {errors.username && <p className="error-message">{errors.username}</p>}
                 </div>
@@ -121,19 +116,17 @@ function AuthPage() {
                 <div className="form-group">
                   <div className="label-row">
                     <label htmlFor="password">Password</label>
-                  
                   </div>
                   <div className="input-wrapper">
                     <input
-                      type={showPassword ? "text" : "password"}
+                      type="password"
                       id="password"
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
-                      placeholder="  ••••••••"
+                      placeholder="••••••••"
                       className={errors.password ? "error" : ""}
                     />
-                   
                   </div>
                   {errors.password && <p className="error-message">{errors.password}</p>}
                 </div>
@@ -145,9 +138,7 @@ function AuthPage() {
             </div>
           </div>
 
-          <div className="help-footer">
-            {/* <p>Need help? <a href="#" className="help-link">Contact Support</a></p> */}
-          </div>
+          <div className="help-footer"></div>
         </div>
       </div>
     </div>

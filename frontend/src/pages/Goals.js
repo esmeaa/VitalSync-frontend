@@ -8,7 +8,7 @@ const Goals = () => {
   const [goals, setGoals] = useState([]);
   const [editingId, setEditingId] = useState(null);
 
-  const BACKEND_URL = 'http://localhost:3001'; // Your backend URL
+  const BACKEND_URL = 'http://localhost:3001'; 
 
   useEffect(() => {
     const fetchGoals = async () => {
