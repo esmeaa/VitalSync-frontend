@@ -49,8 +49,7 @@ import SetUp from './pages/setUp';
 import Launch from './pages/launch';
 import AuthPage from './pages/AuthPage';
 import ProfilePage from './pages/ProfilePage';
-import EditProfilePage from './pages/EditProfilePage';
-// import MealPlans from './pages/MealPlans';    
+import EditProfilePage from './pages/EditProfilePage';  
 import DietCapture from './pages/DietCapture'
 import RegisterPage from './pages/RegisterPage';
 import Goals from './pages/Goals';
