@@ -76,10 +76,6 @@ const Home = () => {
             <span className="quick-label">Workout</span>
           </div>
           <div className="quick-item">
-            <FontAwesomeIcon icon={faFlag} size="2x" />
-            <span className="quick-label">Progress Tracking</span>
-          </div>
-          <div className="quick-item">
             <FontAwesomeIcon icon={faUtensils} size="2x" />
             <span className="quick-label">Food</span>
           </div>
