@@ -49,8 +49,12 @@ import SetUp from './pages/setUp';
 import Launch from './pages/launch';
 import AuthPage from './pages/AuthPage';
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 import ProfilePage from './pages/ProfilePage';
+=======
+/*import ProfilePage from './pages/ProfilePage';*/
+>>>>>>> Stashed changes
 =======
 /*import ProfilePage from './pages/ProfilePage';*/
 >>>>>>> Stashed changes
