@@ -128,8 +128,6 @@ import profilePicture from '../images/profile_pic.jpg';
 const Profile = () => {
   const [profile, setProfile] = useState({
     name: 'User Name',
-    email: '',
-    birthday: '',
     weight: '---',
     age: '---',
     height: '---'
@@ -156,7 +154,6 @@ const Profile = () => {
         />
         <h3>{profile.name}</h3>
         {profile.email && <p className="profile-email">{profile.email}</p>}
-        {profile.birthday && <p className="profile-birthday">Birthday: {profile.birthday}</p>}
       </div>
 
       <div className="profile-stats">
