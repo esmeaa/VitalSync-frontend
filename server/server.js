@@ -232,3 +232,29 @@ app.post("/api/diet-log", async (req, res) => {
     res.status(200).json({ message: "Diet log saved" });
 });
 
+app.post('/api/exercises', async (req, res) => {
+    const { exerciseType, duration, distance, date, user_name} = req.body;
+
+    if (!exerciseType || !duration || !distance || !date) {
+        return res.status(400).json({ message: "All fields are required" });
+    }
+
+    try {
+        const result = await db.query(
+            `INSERT INTO exercises (exercise_type, duration, distance, exercise_date, user_name)
+             VALUES ($1, $2, $3, $4, $5)
+             RETURNING *`,
+            [exerciseType, duration, distance, date, user_name]
+        );
+
+        res.status(201).json(result.rows[0]);
+    } catch (err) {
+        console.error('Error saving exercise:', err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+// app.get("/api/food-items", async (req, res) => {
+//     const result = await db.query("SELECT * FROM food_items");
+//     res.json(result.rows);
+// });

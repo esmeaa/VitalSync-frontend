@@ -16,9 +16,10 @@ const Exercise = () => {
       duration,
       distance,
       date,
+      user_name: localStorage.getItem('user_name'), // Assuming you store the username in localStorage
     };
     try {
-      const response = await fetch("http://localhost:5000/api/exercises", {
+      const response = await fetch("http://localhost:3001/api/exercises", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newEntry),
