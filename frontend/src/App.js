@@ -44,7 +44,7 @@
 // src/App.js
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './Navbar'; // Import the Navbar
+import Navbar from './Navbar'; // Import the Navbar component
 import SetUp from './pages/setUp';
 import Launch from './pages/launch';
 import AuthPage from './pages/AuthPage';
