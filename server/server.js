@@ -190,8 +190,8 @@ app.post('/api/setUp', async (req, res) => {
         res.status(500).json({ message: "Failed to save setup data" });
     }
 });
-  
-  
+
+
 // Get food list
 app.get("/api/food-items", async (req, res) => {
     const result = await db.query("SELECT * FROM food_items");
@@ -211,13 +211,13 @@ app.post("/api/food-items", async (req, res) => {
 // Save a diet log
 app.post("/api/diet-log", async (req, res) => {
     const { user_name, food_item_id, calories, meal_type } = req.body;
-//     await db.query(
-//         `INSERT INTO diet_logs (user_name, food_item_id, calories, meal_type, created_at)
-//          VALUES ($1, $2, $3, $4, NOW())`,
-//         [user_name, food_item_id, calories, meal_type]
-//     );
-//     res.status(200).json({ message: "Diet log saved" });
-// });
+    //     await db.query(
+    //         `INSERT INTO diet_logs (user_name, food_item_id, calories, meal_type, created_at)
+    //          VALUES ($1, $2, $3, $4, NOW())`,
+    //         [user_name, food_item_id, calories, meal_type]
+    //     );
+    //     res.status(200).json({ message: "Diet log saved" });
+    // });
 
     if (!user_name) {
         return res.status(400).json({ message: "User not logged in" });
