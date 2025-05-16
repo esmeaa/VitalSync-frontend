@@ -63,80 +63,72 @@
 }
 
 body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
   background-color: var(--black);
+  color: var(--white);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.edit-page-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.edit-profile-container {
+  max-width: 480px;
+  width: 100%;
+  background-color: #1a1a1a;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(128, 0, 128, 0.3);
+}
+
+.edit-profile-container h2 {
+  text-align: center;
+  margin-bottom: 1rem;
   color: var(--white);
 }
 
-.edit-profile-wrapper {
-  max-width: 480px;
-  margin: 40px auto;
-  background-color: var(--black);
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-  padding: 30px 40px;
-}
-
-.edit-profile-wrapper h1,
-.edit-profile-wrapper h2 {
-  text-align: center;
-  margin-bottom: 24px;
-  color: var(--light-purple);
-}
-
-form>div {
+.edit-profile-form {
   display: flex;
   flex-direction: column;
-  margin-bottom: 18px;
+  gap: 1rem;
 }
 
-label {
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: var(--purple);
-}
-
-input[type="text"],
-input[type="password"],
-input[type="number"] {
-  padding: 10px 14px;
-  border: 1.5px solid var(--light-purple);
-  border-radius: 8px;
-  background-color: var(--black);
+.edit-profile-form label {
+  font-size: 0.95rem;
+  font-weight: bold;
   color: var(--white);
-  font-size: 15px;
+}
+
+.edit-profile-form input {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #2b2b2b;
+  color: var(--white);
+  font-size: 1rem;
   transition: border-color 0.3s ease;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="number"]:focus {
+.edit-profile-form input:focus {
+  border-color: var(--light-purple);
   outline: none;
-  border-color: var(--lime-green);
 }
 
-button {
+.edit-profile-form button {
+  margin-top: 1rem;
   background-color: var(--purple);
   color: var(--white);
+  padding: 0.75rem;
   border: none;
-  padding: 12px 0;
-  width: 100%;
-  font-size: 16px;
-  border-radius: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 8px;
-  font-weight: 700;
 }
 
-button:hover {
-  background-color: var(--lime-green);
-  color: var(--black);
-}
-
-.error-message {
-  color: #ff4d4d;
-  text-align: center;
-  margin-top: 10px;
+.edit-profile-form button:hover {
+  background-color: var(--light-purple);
 }

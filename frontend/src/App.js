@@ -51,6 +51,7 @@ import AuthPage from './pages/AuthPage';
 import ProfilePage from './pages/ProfilePage';
 import EditProfilePage from './pages/EditProfilePage';
 import MealPlans from './pages/MealPlans';
+import DietCapture from './pages/DietCapture';
 import { Link } from 'react-router-dom';
 
 
@@ -67,6 +68,7 @@ function App() {
           <li><Link to="/ProfilePage" className="nav-link">Go to ProfilePage</Link></li>
           <li><Link to="/EditProfilePage" className="nav-link">Go to EditProfilePage</Link></li>
           <li><Link to="/MealPlans" className="nav-link">Go to MealPlans</Link></li>
+          <li><Link to="/DietCapture" className="nav-link">Go to DietCapture</Link></li>
 
 
         </ul>
@@ -80,6 +82,7 @@ function App() {
        <Route path="/ProfilePage" element={<ProfilePage /> }/>
        <Route path="/EditProfilePage" element={<EditProfilePage /> }/>
        <Route path="/MealPlans" element={<MealPlans /> }/>
+       <Route path="/DietCapture" element={<DietCapture /> }/>
 	    </Routes>
       
     </div>

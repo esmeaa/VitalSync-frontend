@@ -228,182 +228,55 @@
 //   );
 // }
 
-import React, { useState, useEffect } from "react";
+// EditProfile.js - Updates localStorage and syncs with Profile.js
+import React, { useState } from 'react';
+import "../pages/EditProfilePage";
 
 const EditProfile = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [gender, setGender] = useState("");
-  const [age, setAge] = useState("");
-  const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
-  const [ethnicity, setEthnicity] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    birthday: '',
+    weight: '',
+    age: '',
+    height: ''
+  });
 
-  const handleLogin = async () => {
-    try {
-      const response = await fetch("http://localhost:3001/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ user_name: username, user_password: password }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setIsAuthenticated(true);
-        alert("Login successful! You can now update your profile.");
-      } else {
-        setErrorMessage(data.message || "Login failed. Please check your credentials.");
-      }
-    } catch (err) {
-      console.error("Error logging in:", err);
-      setErrorMessage("Error logging in.");
-    }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!isAuthenticated) {
-      alert("You need to log in first.");
-      return;
-    }
-
-    const updatedProfile = {
-      user_name: username,
-      first_name: firstName,
-      last_name: lastName,
-      gender: gender,
-      age: age,
-      height: height,
-      weight: weight,
-      ethnicity: ethnicity,
-    };
-
-    try {
-      const response = await fetch("http://localhost:3001/api/editprofile", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedProfile),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        alert("Profile updated successfully");
-      } else {
-        alert(data.message || "Error updating profile");
-      }
-    } catch (err) {
-      console.error("Error updating profile:", err);
-      alert("Error updating profile");
-    }
+    localStorage.setItem("profileData", JSON.stringify(formData));
+    alert("Profile updated successfully!");
   };
 
   return (
-    <div>
-      {!isAuthenticated ? (
-        <div>
-          <h2>Please log in to make changes to your existing profile.</h2>
-          <form onSubmit={(e) => e.preventDefault()}>
-            <div>
-              <label>Username:</label>
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label>Password:</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <button type="button" onClick={handleLogin}>
-              Login
-            </button>
-          </form>
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-        </div>
-      ) : (
-        <div>
-          <h2>Edit Profile</h2>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label>First Name:</label>
-              <input
-                type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label>Last Name:</label>
-              <input
-                type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label>Gender:</label>
-              <input
-                type="text"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Age:</label>
-              <input
-                type="number"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Height (in cm):</label>
-              <input
-                type="number"
-                value={height}
-                onChange={(e) => setHeight(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Weight (in kg):</label>
-              <input
-                type="number"
-                value={weight}
-                onChange={(e) => setWeight(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Ethnicity:</label>
-              <input
-                type="text"
-                value={ethnicity}
-                onChange={(e) => setEthnicity(e.target.value)}
-              />
-            </div>
-            <button type="submit">Update Profile</button>
-          </form>
-        </div>
-      )}
+    <div className="edit-profile-container">
+      <h2>Edit Profile</h2>
+      <form className="edit-profile-form" onSubmit={handleSubmit}>
+        <label>Full Name</label>
+        <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+
+        <label>Email</label>
+        <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+
+        <label>Birthday</label>
+        <input type="text" name="birthday" value={formData.birthday} onChange={handleChange} />
+
+        <label>Weight</label>
+        <input type="text" name="weight" value={formData.weight} onChange={handleChange} />
+
+        <label>Age</label>
+        <input type="text" name="age" value={formData.age} onChange={handleChange} />
+
+        <label>Height</label>
+        <input type="text" name="height" value={formData.height} onChange={handleChange} />
+
+        <button type="submit">Update Profile</button>
+      </form>
     </div>
   );
 };
