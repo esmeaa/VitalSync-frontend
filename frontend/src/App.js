@@ -77,8 +77,7 @@ function App() {
         <Route path="/Exercise" element={<Exercise />} />
         <Route path="/ExerciseHistory" element={<ExerciseHistory />} />
         {/* <Route path="/Home" element={<Home />} /> */}
-   
-
+  
       </Routes>
     </div>
   );
