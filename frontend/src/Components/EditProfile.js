@@ -257,6 +257,7 @@ const EditProfile = () => {
 
       if (response.ok) {
         setIsAuthenticated(true);
+        localStorage.setItem("username", username);
         alert("Login successful! You can now update your profile.");
       } else {
         setErrorMessage(data.message || "Login failed. Please check your credentials.");

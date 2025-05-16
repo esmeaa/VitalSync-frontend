@@ -1,11 +1,12 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faHome, faFlag, faUtensils, faUsers, 
-  faDumbbell, faCog, faQuestionCircle,
-  faSearch, faBell, faPlay
-} from '@fortawesome/free-solid-svg-icons';
 import "./home.css"
+import profileIcon from "../images/profile.svg"
+import community from "../images/community.svg"
+import food from "../images/food.svg"
+import Workout from "../images/WorkOut.svg"
+import goals from "../images/goals.svg"
+import home from "../images/home.svg"
+import playB from "../images/Playvideo.svg" 
 const Home = () => {
   return (
     <div className="dashboard">
@@ -13,7 +14,7 @@ const Home = () => {
         <h1 className="logo">Vitalsync</h1>
         <div className="profile">
           <img
-            src="https://via.placeholder.com/80"
+            src= {profileIcon}
             alt="Profile"
             className="avatar"
           />
@@ -24,33 +25,26 @@ const Home = () => {
         </div>
         <nav className="dashboard-links">
           <a href="#" className="active">
-            <FontAwesomeIcon icon={faHome} className="nav-icon" />
+          <img src={home} className="nav-icon"></img>
             <span>Dashboard</span>
           </a>
           <a href="#">
-            <FontAwesomeIcon icon={faFlag} className="nav-icon" />
+          <img src={goals} className="nav-icon"></img>
             <span>Goals</span>
           </a>
           <a href="#">
-            <FontAwesomeIcon icon={faUtensils} className="nav-icon" />
+            <img src={food} className="nav-icon"></img>
             <span>Meal Plan</span>
           </a>
           <a href="#">
-            <FontAwesomeIcon icon={faUsers} className="nav-icon" />
+            <img src={community} className="nav-icon"></img>
             <span>Communities</span>
           </a>
           <a href="#">
-            <FontAwesomeIcon icon={faDumbbell} className="nav-icon" />
+          <img src={Workout} className="nav-icon"></img>
             <span>Exercises</span>
           </a>
-          <a href="#">
-            <FontAwesomeIcon icon={faCog} className="nav-icon" />
-            <span>Settings</span>
-          </a>
-          <a href="#">
-            <FontAwesomeIcon icon={faQuestionCircle} className="nav-icon" />
-            <span>Help Center</span>
-          </a>
+        
         </nav>
       </aside>
 
@@ -61,29 +55,32 @@ const Home = () => {
             <p>It's time to challenge your limits.</p>
           </div>
           <div className="main-icons">
-            <div className="icon search">
-              <FontAwesomeIcon icon={faSearch} />
-            </div>
-            <div className="icon bell">
-              <FontAwesomeIcon icon={faBell} />
-            </div>
+           <img src={profileIcon} className='profileIcon'></img>
+           <p className='profileLabel'>Profile</p>
+            
           </div>
         </header>
 
         <section className="quick-access">
+      
           <div className="quick-item">
-            <FontAwesomeIcon icon={faDumbbell} size="2x" />
-            <span className="quick-label">Workout</span>
+            <img src={Workout} className="quick-image"></img>
+            <span className="quick-label">Exercises</span>
           </div>
           <div className="quick-item">
-            <FontAwesomeIcon icon={faUtensils} size="2x" />
+          <img src={food} className="quick-image"></img>
             <span className="quick-label">Food</span>
           </div>
           <div className="quick-item">
-            <FontAwesomeIcon icon={faUsers} size="2x" />
+            <img src={community} className="quick-image"></img>
             <span className="quick-label">Community</span>
           </div>
+          <div className="quick-item">
+          <img src={goals} className="quick-image"></img>
+            <span className="quick-label">Goals</span>
+          </div>
         </section>
+        
 
         <section className="recommendations">
           <div className="section-header">
@@ -98,7 +95,7 @@ const Home = () => {
                   alt="Squat Exercise"
                 />
                 <div className="play-button">
-                  <FontAwesomeIcon icon={faPlay} />
+                
                 </div>
               </div>
               <div className="card-info">
@@ -117,7 +114,7 @@ const Home = () => {
                   alt="Full Body Stretching"
                 />
                 <div className="play-button">
-                  <FontAwesomeIcon icon={faPlay} />
+
                 </div>
               </div>
               <div className="card-info">
