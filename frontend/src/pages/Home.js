@@ -7,13 +7,15 @@ import Workout from "../images/WorkOut.svg"
 import goals from "../images/goals.svg"
 import home from "../images/home.svg"
 import playB from "../images/Playvideo.svg" 
+import vslogo from "../images/vslogo.png"
 import { Link } from 'react-router-dom'
 
 const Home = () => {
   return (
     <div className="dashboard">
       <aside className="sidebar">
-        <h1 className="logo">Vitalsync</h1>
+        <img src={vslogo} className='logo'></img>
+      
         <div className="profile">
           <img
             src= {profileIcon}

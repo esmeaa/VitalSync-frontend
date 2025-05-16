@@ -48,7 +48,6 @@ import Navbar from './Navbar'; // Import the Navbar
 import SetUp from './pages/setUp';
 import Launch from './pages/launch';
 import AuthPage from './pages/AuthPage';
-import ProfilePage from './pages/ProfilePage';
 import EditProfilePage from './pages/EditProfilePage';  
 import DietCapture from './pages/DietCapture'
 import RegisterPage from './pages/RegisterPage';
@@ -66,7 +65,6 @@ function App() {
         <Route path="/setUp" element={<SetUp />} />
         <Route path="/launch" element={<Launch />} />
         <Route path="/AuthPage" element={<AuthPage />} />
-        <Route path="/ProfilePage" element={<ProfilePage />} />
         <Route path="/EditProfilePage" element={<EditProfilePage />} />
         <Route path="/DietCapture" element={<DietCapture />} />
         <Route path="/Register" element={<RegisterPage />} />
