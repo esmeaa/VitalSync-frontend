@@ -61,13 +61,20 @@ const SetUpStep = ({step, value, onChange}) => {
             options: [{optionName: "Black, African, Caribbean Or Black British" }, {optionName: "Asian Or Asian British"}, {optionName: "Middle Eastern"}, {optionName: "White"}], 
             className: "ethnicity-step", 
             displayType: "dropdown"
-        }
+        },
+        goal: {
+            title: "What Is Your Main Goal?", 
+            paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            options: [{optionName: "Diet" ,icon: nutrition}, {optionName:"Exercise", icon: exercise }], 
+            className: "goal-step",
+            displayType: "option-buttons"
+        },
         };
     
     
     
   return (
-    <div className="layout" id= {`form container ${stepFormat[step]?.className}`}  key={step} >
+    <div className="layout" id= {`form container ${stepFormat[step]?.className}`}>
         <h1 id='title'>{stepFormat[step]?.title}</h1>
         <p className="paragraph" id={`${stepFormat[step].className}-para`}>{stepFormat[step]?.paragraph}</p>
         <form>

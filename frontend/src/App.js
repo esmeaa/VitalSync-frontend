@@ -55,7 +55,7 @@ import DietCapture from './pages/DietCapture'
 import RegisterPage from './pages/RegisterPage';
 import Goals from './pages/Goals';
 import GroupsPage from './pages/GroupsPage';
-import Home from './pages/Home';
+// import Home from './pages/Home';
 
 function App() {
   return (
@@ -72,7 +72,9 @@ function App() {
         <Route path="/Register" element={<RegisterPage />} />
         <Route path="/Goals" element={<Goals />} />
         <Route path="/GroupsPage" element={<GroupsPage />} />
-        <Route path="/Home" element={<Home />} />
+        {/* <Route path="/Home" element={<Home />} /> */}
+   
+
       </Routes>
     </div>
   );

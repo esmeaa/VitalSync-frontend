@@ -7,8 +7,6 @@ import Workout from "../images/WorkOut.svg"
 import goals from "../images/goals.svg"
 import home from "../images/home.svg"
 import playB from "../images/Playvideo.svg" 
-import { Link } from 'react-router-dom'
-
 const Home = () => {
   return (
     <div className="dashboard">
@@ -22,34 +20,31 @@ const Home = () => {
           />
           <div className="profile-info">
             <h2>Madison Wilson</h2>
-
+            <p>Premium Member</p>
           </div>
         </div>
         <nav className="dashboard-links">
-          
-          <Link to="/Home" className="active">
+          <a href="#" className="active">
           <img src={home} className="nav-icon"></img>
             <span>Dashboard</span>
-            </Link>
-          <Link to="/Goals" className="active">
+          </a>
+          <a href="#">
           <img src={goals} className="nav-icon"></img>
             <span>Goals</span>
-          </Link>
-          
-          <Link to="/DietCapture" className="active">
+          </a>
+          <a href="#">
             <img src={food} className="nav-icon"></img>
             <span>Meal Plan</span>
-          </Link>
-          
-          <Link to="/GroupsPage" className="active">
+          </a>
+          <a href="#">
             <img src={community} className="nav-icon"></img>
             <span>Communities</span>
-          </Link> 
-          
-          <Link to="/Exercise" className="active">
+          </a>
+          <a href="#">
           <img src={Workout} className="nav-icon"></img>
             <span>Exercises</span>
-          </Link> 
+          </a>
+        
         </nav>
       </aside>
 
@@ -61,7 +56,7 @@ const Home = () => {
           </div>
           <div className="main-icons">
            <img src={profileIcon} className='profileIcon'></img>
-           <label>Profile</label>
+           <p className='profileLabel'>Profile</p>
             
           </div>
         </header>
@@ -70,7 +65,7 @@ const Home = () => {
       
           <div className="quick-item">
             <img src={Workout} className="quick-image"></img>
-            <span className="quick-label">My Exercise History</span>
+            <span className="quick-label">Exercises</span>
           </div>
           <div className="quick-item">
           <img src={food} className="quick-image"></img>
