@@ -77,12 +77,12 @@ const Exercise = () => {
             {lastAdded && (
               <div className="exercise-card">
                 <div className="exercise-card-header">
-                  <h3>✅ Exercise Logged</h3>
+                  <h3>Exercise Logged</h3>
                 </div>
                 <div className="exercise-card-body">
                   <p><strong>{lastAdded.exerciseType}</strong></p>
-                  <p>⏱ {lastAdded.duration} min &nbsp;&nbsp; 📏 {lastAdded.distance} km</p>
-                  <p>📅 {lastAdded.date}</p>
+                  <p>{lastAdded.duration} min &nbsp;&nbsp; {lastAdded.distance} km</p>
+                  <p> {lastAdded.date}</p>
                 </div>
               </div>
             )}

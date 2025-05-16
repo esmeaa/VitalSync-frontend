@@ -211,26 +211,23 @@ app.post("/api/food-items", async (req, res) => {
 // Save a diet log
 app.post("/api/diet-log", async (req, res) => {
     const { user_name, food_item_id, calories, meal_type } = req.body;
-    //     await db.query(
-    //         `INSERT INTO diet_logs (user_name, food_item_id, calories, meal_type, created_at)
-    //          VALUES ($1, $2, $3, $4, NOW())`,
-    //         [user_name, food_item_id, calories, meal_type]
-    //     );
-    //     res.status(200).json({ message: "Diet log saved" });
-    // });
 
+    // Validate user_name is provided
     if (!user_name) {
         return res.status(400).json({ message: "User not logged in" });
     }
 
+    // Insert a new diet log record into the 'diet_logs' table in the database
     await db.query(
         `INSERT INTO diet_logs (user_name, food_item_id, calories, meal_type, created_at)
-     VALUES ($1, $2, $3, $4, NOW())`,
+         VALUES ($1, $2, $3, $4, NOW())`,
         [user_name, food_item_id, calories, meal_type]
     );
 
+    // Respond with success
     res.status(200).json({ message: "Diet log saved" });
 });
+
 
 app.post('/api/exercises', async (req, res) => {
     const { exerciseType, duration, distance, date, user_name} = req.body;
@@ -254,7 +251,28 @@ app.post('/api/exercises', async (req, res) => {
     }
 });
 
-// app.get("/api/food-items", async (req, res) => {
-//     const result = await db.query("SELECT * FROM food_items");
-//     res.json(result.rows);
-// });
+app.get("/api/food-items", async (req, res) => {
+    const result = await db.query("SELECT * FROM food_items");
+    res.json(result.rows);
+});
+
+app.get("/api/diet-log", async (req, res) => {
+    const { user_name } = req.query;
+    if (!user_name) {
+        return res.status(400).json({ message: "User not logged in" });
+    }
+    try {
+        const result = await db.query(
+            `SELECT dl.*, fi.name AS food_name
+         FROM diet_logs dl
+         JOIN food_items fi ON dl.food_item_id = fi.id
+         WHERE dl.user_name = $1
+         ORDER BY dl.created_at DESC`,
+            [user_name]
+        );
+        res.json(result.rows);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching diet logs" });
+    }
+});
+  
