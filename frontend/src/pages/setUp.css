@@ -1,9 +1,9 @@
-.back {
+.back{
    position: fixed;
-   top: 20px;
+   top:20px;
    left: 30px;
    width: 100px;
-   height: 55px;
+   height:55px;
    border-radius: 12px;
    font-size: 26px;
    font-family: "Poppins";
@@ -13,32 +13,34 @@
    border-color: white;
    color: white;
    transition: background-color 0.3s ease, transform 0.3s ease;
-
-}
-
-.continue {
-   width: 185px;
-   height: 60px;
-   border-radius: 12px;
-   font-size: 23px;
-   font-family: "Poppins";
-   font-weight: bold;
-   border-width: 0.5;
-   background-color: #343434eb;
-   border-color: white;
-   color: white;
-   margin-top: 15px;
-   transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.continue:hover {
-   background-color: #939292eb;
-   transform: scale(1.1);
-
-}
-
-.back:hover {
-   background-color: #939292eb;
-   transform: scale(1.1);
-
-}
+   
+      
+   }
+   .continue{
+       
+       width: 185px;
+       height:60px;
+       border-radius: 12px;
+       font-size: 23px;
+       font-family: "Poppins";
+       font-weight: bold;
+       border-width: 0.5;
+       background-color: #343434eb;
+       border-color: white;
+       color: white;
+       margin-top: 15px;
+       transition: background-color 0.3s ease, transform 0.3s ease;
+       
+    }
+   
+    .continue:hover{
+       background-color:  #939292eb;
+       transform: scale(1.1);
+   
+    }
+   
+    .back:hover{
+       background-color:  #939292eb;
+       transform: scale(1.1);
+   
+    }

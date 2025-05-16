@@ -1,55 +1,41 @@
+
 import React, {useState} from 'react';
 import "./setUpStep.css"
 import female from "../images/female.svg";
 import male from "../images/male.svg";
-// import nutrition from "../images/Nutrition.png";
-// import exercise from "../images/exercise.png";
+import nutrition from "../images/Nutrition.svg";
+import exercise from "../images/Exercise.svg";
 import ScrollableSlider from './scrollableSlider';
 import AgeSlider from "./ageSlider";
 
 
-
-const SetUpStep = ({step}) => {
-    const[formData, setFormData] = useState({
-        gender: "",
-        age:"",
-        height:"",
-        weight:"",
-        ethnicity:"",
-        goal:"",
-    });
+const SetUpStep = ({step, value, onChange}) => {
+  
     const [selectedOption, setSelectedOption] = useState(null);
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        }
-        );
-    
-    };
+
     
     const stepFormat = {
         gender: {
             title: "What's Your Gender?",
-            // paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             options:[{optionName: "Male", icon: male},{optionName: "Female", icon: female}],
             className: "gender-step",
             displayType: "option-buttons"
         },
         age: {
             title: "How Old Are You?",
-            // paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             type: "number", 
             className: "age-step",
             min:18,
-            max:24,
+            max:22,
             interval:1,
             unit:"",
             displayType: "slider-age"
         }, 
         height: { 
-            title: "What's Your Height?", 
-            // paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            title: "What Is Your Height?", 
+            paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             type: "number", 
             unit: "cm", 
             className: "height-step", 
@@ -59,8 +45,8 @@ const SetUpStep = ({step}) => {
             displayType: "slider"
         }, 
         weight: { 
-            title: "What's Your Weight?", 
-            // paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            title: "What is Your Weight?", 
+            paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             type: "number", 
             unit: "kg", 
             className: "weight-step", 
@@ -70,19 +56,19 @@ const SetUpStep = ({step}) => {
             displayType: "slider"
         }, 
         ethnicity: { 
-            title: "What's Your Ethnic Origin?", 
-            // paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            title: "What Is Your Ethnic Origin?", 
+            paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             options: [{optionName: "Black, African, Caribbean Or Black British" }, {optionName: "Asian Or Asian British"}, {optionName: "Middle Eastern"}, {optionName: "White"}], 
             className: "ethnicity-step", 
             displayType: "dropdown"
         },
-        // goal: {
-        //     title: "What Is Your Main Goal?", 
-        //     paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        //     options: [{optionName: "Diet" ,icon: nutrition}, {optionName:"Exercise", icon: exercise }], 
-        //     className: "goal-step",
-        //     displayType: "option-buttons"
-        // },
+        goal: {
+            title: "What Is Your Main Goal?", 
+            paragraph: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            options: [{optionName: "Diet" ,icon: nutrition}, {optionName:"Exercise", icon: exercise }], 
+            className: "goal-step",
+            displayType: "option-buttons"
+        },
         };
     
     
@@ -101,12 +87,17 @@ const SetUpStep = ({step}) => {
               <div className={`option ${selectedOption === option.optionName ? "option-selected" : ""}`}
                   key={option.optionName}>
                 <button className="option-button" 
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
+                  const selectedValue = option.optionName;
                   console.log("button selected");
-                  if (selectedOption === option.optionName) {
+
+                  if (selectedOption === selectedValue) {
                     setSelectedOption(null); // Deselect
+                    onChange(step, "");
                   } else {
-                    setSelectedOption(option.optionName); // Select new
+                    setSelectedOption(selectedValue); // Select new
+                    onChange(step, selectedValue);
                   }
                 }}>
                   {option.icon && <img src={option.icon} alt={option.optionName} id="icon" />}
@@ -124,6 +115,7 @@ const SetUpStep = ({step}) => {
             max={stepFormat[step].max}
             interval={stepFormat[step].interval}
             unit={stepFormat[step].unit}
+            onChange={(value) => onChange(step, value)}
           />
         );
         case "slider-age":
@@ -133,6 +125,7 @@ const SetUpStep = ({step}) => {
               max={stepFormat[step].max}
               interval={stepFormat[step].interval}
               unit={stepFormat[step].unit}
+              onChange={(value) => onChange(step, value)}
             />
           );
 
@@ -140,8 +133,8 @@ const SetUpStep = ({step}) => {
         return (
           <select
             name={step}
-            value={formData[step]}
-            onChange={handleChange}
+            value={value}
+            onChange={(e) => onChange(step, e.target.value)}
             required
             className='dropdown'
           >
@@ -159,7 +152,20 @@ const SetUpStep = ({step}) => {
           <div className="options">
             {stepFormat[step].options.map((option) => (
               <div className="option" key={option.optionName}>
-                <button className="option-button">
+                <button className="option-button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const selectedValue = option.optionName;
+                  console.log("button selected");
+
+                  if (selectedOption === selectedValue) {
+                    setSelectedOption(null); // Deselect
+                    onChange(step, "");
+                  } else {
+                    setSelectedOption(selectedValue); // Select new
+                    onChange(step, selectedValue);
+                  }
+                }}>
                   <img src={option.icon} alt={option.optionName} />
                 </button>
                 <p>{option.optionName}</p>
@@ -179,4 +185,3 @@ const SetUpStep = ({step}) => {
 }
 
 export default SetUpStep;
-
