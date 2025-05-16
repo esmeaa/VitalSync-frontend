@@ -48,13 +48,11 @@ import Navbar from './Navbar'; // Import the Navbar
 import SetUp from './pages/setUp';
 import Launch from './pages/launch';
 import AuthPage from './pages/AuthPage';
-import ProfilePage from './pages/profilePage';
+import ProfilePage from './pages/ProfilePage';
 import EditProfilePage from './pages/EditProfilePage';
 // import MealPlans from './pages/MealPlans';    
 import DietCapture from './pages/DietCapture'
 import RegisterPage from './pages/RegisterPage';
-import Exercise from './pages/Exercise';
-import ExerciseHistory from './pages/ExerciseHistory';
 import Goals from './pages/Goals';
 import GroupsPage from './pages/GroupsPage';
 import Home from './pages/Home';
@@ -72,8 +70,6 @@ function App() {
         <Route path="/EditProfilePage" element={<EditProfilePage />} />
         <Route path="/DietCapture" element={<DietCapture />} />
         <Route path="/Register" element={<RegisterPage />} />
-        <Route path="/Exercise" element={<Exercise />} />
-        <Route path="/ExerciseHistory" element={<ExerciseHistory />} />
         <Route path="/Goals" element={<Goals />} />
         <Route path="/GroupsPage" element={<GroupsPage />} />
         <Route path="/Home" element={<Home />} />

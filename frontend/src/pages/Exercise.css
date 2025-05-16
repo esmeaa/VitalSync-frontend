@@ -1,40 +1,95 @@
-.exercise-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #FFFFFF;
-    color: #232323;
-    font-family: 'Segoe UI', sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0d0d0d;
+    color: white;
+  }
+  
+  .exercise-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #0d0d0d;
+    padding: 2rem;
+  }
+  
+  .exercise-box {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(128, 0, 128, 0.3);
+    max-width: 480px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .exercise-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: white;
   }
   
   .exercise-form {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 1rem;
+    width: 100%;
   }
   
   .exercise-form input,
   .exercise-form select {
-    padding: 10px;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #2b2b2b;
+    color: white;
     font-size: 1rem;
-    border: 1px solid #B3A0FF;
-    border-radius: 5px;
-    background-color: #FFFFFF;
-    color: #232323;
   }
   
-  .exercise-form button {
-    padding: 12px;
-    font-size: 1rem;
+  input::placeholder,
+  select::placeholder {
+    color: #aaa;
+  }
+  
+  input:focus,
+  select:focus {
+    border-color: #a855f7;
+    outline: none;
+  }
+  
+  .exercise-form button,
+  .exercise-history-button button {
     background-color: #8a2be2;
-    color: #FFFFFF;
+    color: white;
+    padding: 0.75rem;
+    width: 100%;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .exercise-form button:hover,
+  .exercise-history-button button:hover {
+    background-color: #a855f7;
   }
   
   .exercise-history-button {
     margin-top: 30px;
+    width: 100%;
     text-align: center;
   }
   
@@ -46,6 +101,7 @@
     margin-top: 20px;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
     animation: fadeIn 0.4s ease-in-out;
+    width: 100%;
   }
   
   .exercise-card-header h3 {
@@ -126,4 +182,14 @@
     color: white;
     cursor: pointer;
     margin-top: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .exercise-container {
+      padding: 1rem;
+    }
+  
+    .exercise-box {
+      padding: 1.5rem;
+    }
   }
