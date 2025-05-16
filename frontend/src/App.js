@@ -49,9 +49,10 @@ import Navbar from './Navbar'; // Import the Navbar
 import SetUp from './pages/setUp';
 import Launch from './pages/launch';
 import AuthPage from './pages/AuthPage';
-import ProfilePage from './pages/profilepage';
+import ProfilePage from './pages/profilePage';
 import EditProfilePage from './pages/EditProfilePage';
 import MealPlans from './pages/MealPlans';
+import DietCapture from './pages/DietCapture';
 import GroupsPage from './pages/GroupsPage';
 import Exercise from './pages/Exercise';
 import Goals from './pages/Goals';
@@ -72,6 +73,7 @@ function App() {
           <li><Link to="/ProfilePage" className="nav-link">Go to ProfilePage</Link></li>
           <li><Link to="/EditProfilePage" className="nav-link">Go to EditProfilePage</Link></li>
           <li><Link to="/MealPlans" className="nav-link">Go to MealPlans</Link></li>
+          <li><Link to="/DietCapture" className="nav-link">Go to DietCapture</Link></li>
           <li><Link to="/Exercise" className="nav-link">Go to Exercise page</Link></li>
           <li><Link to="/Goals" className="nav-link">Go to Goals page</Link></li>
           <li><Link to="/GroupsPage" className="nav-link">Go to Groups page</Link></li>
@@ -88,6 +90,7 @@ function App() {
        <Route path="/ProfilePage" element={<ProfilePage /> }/>
        <Route path="/EditProfilePage" element={<EditProfilePage /> }/>
        <Route path="/MealPlans" element={<MealPlans /> }/>
+       <Route path="/DietCapture" element={<DietCapture /> }/>
        <Route path="/Exercise" element={<Exercise /> }/>
        <Route path="/Goals" element={<Goals /> }/>
        <Route path="/GroupsPage" element={<GroupsPage /> }/>
