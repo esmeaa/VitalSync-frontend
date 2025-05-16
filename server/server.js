@@ -192,3 +192,125 @@ app.post('/api/setUp', async (req, res) => {
 });
   
   
+// Get food list
+app.get("/api/food-items", async (req, res) => {
+    const result = await db.query("SELECT * FROM food_items");
+    res.json(result.rows);
+});
+
+// Add custom food item
+app.post("/api/food-items", async (req, res) => {
+    const { name } = req.body;
+    const result = await db.query(
+        "INSERT INTO food_items (name, is_custom) VALUES ($1, true) RETURNING *",
+        [name]
+    );
+    res.status(201).json(result.rows[0]);
+});
+
+// Save a diet log
+app.post("/api/diet-log", async (req, res) => {
+    const { user_name, food_item_id, calories, meal_type } = req.body;
+//     await db.query(
+//         `INSERT INTO diet_logs (user_name, food_item_id, calories, meal_type, created_at)
+//          VALUES ($1, $2, $3, $4, NOW())`,
+//         [user_name, food_item_id, calories, meal_type]
+//     );
+//     res.status(200).json({ message: "Diet log saved" });
+// });
+
+    if (!user_name) {
+        return res.status(400).json({ message: "User not logged in" });
+    }
+
+    await db.query(
+        `INSERT INTO diet_logs (user_name, food_item_id, calories, meal_type, created_at)
+     VALUES ($1, $2, $3, $4, NOW())`,
+        [user_name, food_item_id, calories, meal_type]
+    );
+
+    res.status(200).json({ message: "Diet log saved" });
+});
+
+
+// Get diet logs for a specific user
+// app.get('/api/diet-logs/:user_name', async (req, res) => {
+//     const { user_name } = req.params;
+
+//     try {
+//         const result = await db.query(
+//             "SELECT dl.id, fi.name AS food_name, dl.calories, dl.meal_type, dl.created_at FROM diet_logs dl JOIN food_items fi ON dl.food_item_id = fi.id WHERE dl.user_name = $1 ORDER BY dl.created_at DESC",
+//             [user_name]
+//         );
+//         res.json(result.rows);
+//     } catch (err) {
+//         console.error('Error fetching diet logs:', err);
+//         res.status(500).json({ error: 'Internal server error' });
+//     }
+// });
+
+
+// app.get("/api/diet-logs/:user_name", async (req, res) => {
+//     const { user_name } = req.params;
+
+//     try {
+//         const result = await pool.query(
+//             "SELECT * FROM diet_logs WHERE user_name = $1 ORDER BY created_at DESC",
+//             [user_name]
+//         );
+//         res.json(result.rows);
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).json({ error: "Internal server error" });
+//     }
+// });
+  
+
+// app.get("/api/diet-logs/:user_name", async (req, res) => {
+//     const { user_name } = req.params;
+
+//     try {
+//         const result = await pool.query(
+//             `SELECT
+//           meal_type,
+//           array_agg(fi.name) AS foods,
+//           SUM(calories) AS total_calories
+//         FROM diet_logs dl
+//         JOIN food_items fi ON dl.food_item_id = fi.id
+//         WHERE user_name = $1
+//         GROUP BY meal_type
+//         ORDER BY meal_type;`,
+//             [user_name]
+//         );
+
+//         res.json(result.rows);
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).json({ error: "Internal server error" });
+//     }
+// });
+  
+app.get("/api/diet-logs/:user_name", async (req, res) => {
+    const { user_name } = req.params;
+
+    try {
+        const result = await pool.query(
+            `SELECT
+          meal_type,
+          array_agg(fi.name) AS foods,
+          SUM(calories) AS total_calories
+        FROM diet_logs dl
+        JOIN food_items fi ON dl.food_item_id = fi.id
+        WHERE LOWER(user_name) = LOWER($1)
+        GROUP BY meal_type
+        ORDER BY meal_type;`,
+            [user_name]
+        );
+        console.log('DB result:', result.rows); // <-- DEBUG
+        res.json(result.rows);
+    } catch (err) {
+        console.error('DB query error:', err);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+  

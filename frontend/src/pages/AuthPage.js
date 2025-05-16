@@ -523,7 +523,9 @@ function AuthPage() {
 
       const data = await res.json();
       if (data.login === "success") {
-        navigate("/setUp");
+        // Store user ID in local storage 
+        localStorage.setItem("user_name", formData.username);
+        navigate("/ProfilePage");
       }
     } catch (error) {
       alert("An error occurred during login.");
