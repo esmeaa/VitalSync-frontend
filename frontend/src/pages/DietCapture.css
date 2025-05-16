@@ -1,164 +1,123 @@
-<<<<<<< HEAD
-/* .diet-capture-container {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 30px;
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    font-family: 'Segoe UI', sans-serif;
-}
-
-.diet-capture-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #2c3e50;
-}
-
-.diet-capture-form label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: 600;
-    color: #34495e;
-}
-
-.diet-capture-form input,
-.diet-capture-form select {
-    width: 100%;
-    padding: 10px 12px;
-    margin-bottom: 15px;
-    border: 1px solid #dcdde1;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    transition: border 0.2s ease;
-    font-size: 16px;
-}
-
-.diet-capture-form input:focus,
-.diet-capture-form select:focus {
-    border-color: #3498db;
-    outline: none;
-}
-
-.add-custom-button {
-    background: none;
-    border: none;
-    color: #2980b9;
-    cursor: pointer;
-    font-size: 14px;
-    text-decoration: underline;
-    margin-top: -10px;
-    margin-bottom: 15px;
-}
-
-.submit-button {
-    background-color: #27ae60;
-    color: white;
-    font-weight: bold;
-    padding: 12px;
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.submit-button:hover {
-    background-color: #219150;
-}
-
-.success-message,
-.error-message {
-    margin-top: 10px;
-    text-align: center;
-    font-size: 14px;
-}
-
-.success-message {
-    color: #2ecc71;
-}
-
-.error-message {
-    color: #e74c3c;
-} */
-
-/* Intro Screen Styles */
-.diet-intro {
-    position: relative;
-=======
-
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Base body styling */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #232323;
     color: white;
 }
 
+/* Container */
 .diet-capture {
->>>>>>> 938701cceb5e41aa319476d023a35fe849d260c0
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  .diet-intro::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: #0d0d0d;
+}
+
+/* Inner form box */
+.diet-capture-box {
+    background-color: #1a1a1a;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+    max-width: 480px;
     width: 100%;
-    height: 100vh;
-    background-image: url('../images/berriesBackground.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: brightness(0.7);
-  }
-  
-  .diet-intro-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(178, 119, 241, 0.9);
-    padding: 24px 20px;
-    border-radius: 20px;
-    width: 90%;
-    max-width: 360px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.4);
     text-align: center;
-  }
-  
-  .section-title {
-    font-size: 1.6rem;
-    font-weight: bold;
-    margin-bottom: 12px;
-    color: #fff;
-  }
-  
-  .section-desc {
-    font-size: 0.9rem;
-    color: #eee;
-    margin-bottom: 16px;
-  }
-  
-  .primary-btn {
-    padding: 10px 24px;
-    border: none;
-    border-radius: 16px;
-    font-weight: bold;
-    font-size: 1rem;
-    background-color: #e94560;
+}
+
+/* Heading */
+.diet-capture-box h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
     color: white;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+}
+
+/* Select, input, button styles */
+.diet-capture-box select,
+.diet-capture-box input[type="text"],
+.diet-capture-box input[type="number"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #2b2b2b;
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.diet-capture-box select:focus,
+.diet-capture-box input:focus {
+    border-color: #a855f7;
+    outline: none;
+}
+
+input::placeholder,
+select::placeholder {
+    color: #aaa;
+}
+
+/* Buttons */
+.diet-capture-box button {
+    background-color: #8a2be2;
+    color: white;
+    padding: 0.75rem;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
-    margin-top: 10px;
-  }
+    transition: background-color 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.diet-capture-box button:hover {
+    background-color: #a855f7;
+}
+
+/* Last diet log card */
+.diet-log-card {
+    background-color: #1e1e1e;
+    color: #fff;
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+    text-align: left;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.diet-log-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    color: #E2F163;
+}
+
+.diet-log-card p {
+    font-size: 1rem;
+    margin: 6px 0;
+    color: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .diet-capture-box {
+        padding: 1.5rem 1.8rem;
+    }
+}
