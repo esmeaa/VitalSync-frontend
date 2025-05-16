@@ -56,27 +56,13 @@ body {
 }
 
 .logo {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 40px;
-  text-align: center;
-  color: var(--primary-color);
-  letter-spacing: 1px;
-  position: relative;
-  padding-bottom: 15px;
+  height: 100px;
+  width: 150px;
+  margin-bottom: 10px;
+
 }
 
-.logo::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 3px;
-  background-color: var(--primary-color);
-  border-radius: 2px;
-}
+
 
 .profile {
   text-align: center;
@@ -168,6 +154,9 @@ body {
   width: 4px;
   background-color: var(--primary-color);
   border-radius: 0 4px 4px 0;
+}
+.dashboard-links a:hover {
+  transform: translateX(5px) scale(1.02);
 }
 
 .dashboard-links a:hover:not(.active) {
