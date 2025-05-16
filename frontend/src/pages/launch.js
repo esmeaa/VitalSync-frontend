@@ -2,18 +2,6 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import LogoAnim from '../Components/logoAnim'
 
-// const launch = () => {
-//   return (
-//     <div>
-//       <LogoAnim />
-
-//     </div>
-//   )
-// }
-
-//changeee
-//khureufrwfhl
-
 const Launch = () => {
   const navigate = useNavigate();
 
