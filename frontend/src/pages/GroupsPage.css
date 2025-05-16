@@ -1,112 +1,39 @@
-
-
-.groups-container {
-  @apply p-6 min-h-screen bg-gray-100;
+.groups {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
 }
-
-.groups-header {
-  @apply mb-6;
+.form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
-
-.groups-subtitle {
-  @apply text-lg text-gray-500;
+input {
+  padding: 0.5rem;
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-
-.primary-button {
-  @apply bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700;
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #3182ce;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
 }
-
-.secondary-button {
-  @apply bg-gray-300 text-gray-900 px-4 py-2 rounded hover:bg-gray-400;
+button:hover {
+  background: #000000;
 }
-
-.action-button {
-  @apply text-sm px-3 py-1 rounded border border-gray-300 bg-white hover:bg-blue-50;
+.list {
+  list-style: none;
+  padding: 0;
 }
-.action-button.create {
-  @apply text-green-600 border-green-600;
+.list li {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: #030303;
+  border-radius: 4px;
 }
-.action-button.join {
-  @apply text-blue-600 border-blue-600;
-}
-
-.text-button {
-  @apply text-blue-600 text-sm underline cursor-pointer hover:text-blue-800;
-}
-
-.form-container {
-  @apply bg-white p-4 border border-gray-200 rounded shadow mb-4;
-}
-
-.form-group {
-  @apply mb-4;
-}
-.form-group input,
-.form-group textarea {
-  @apply w-full p-2 border border-gray-300 rounded;
-}
-
-.form-actions {
-  @apply flex gap-3 mt-2;
-}
-
-.group-item {
-  @apply p-3 mb-2 border border-gray-300 rounded bg-white hover:bg-blue-50 cursor-pointer;
-}
-.group-item.selected {
-  @apply bg-blue-100 border-blue-400;
-}
-
-.group-main-content {
-  @apply flex-1 p-4 bg-white rounded shadow;
-}
-
-.section {
-  @apply mt-6;
-}
-
-.section-header {
-  @apply flex justify-between items-center mb-2;
-}
-
-.members-list {
-  @apply grid gap-3;
-}
-
-.member-item {
-  @apply flex items-center gap-3 bg-gray-50 border border-gray-200 p-2 rounded;
-}
-
-.member-avatar {
-  @apply w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold;
-}
-
-.goals-list {
-  @apply space-y-4 mt-4;
-}
-.goal-item {
-  @apply p-4 border rounded bg-white;
-}
-.goal-item.achieved {
-  @apply border-green-400 bg-green-50;
-}
-
-.goal-footer {
-  @apply mt-3 flex justify-between items-center text-sm;
-}
-
-.achievement-item {
-  @apply flex items-start gap-3 bg-yellow-50 border-l-4 border-yellow-400 p-2 rounded;
-}
-.achievement-icon {
-  @apply text-2xl;
-}
-
-.empty-state,
-.empty-state-large {
-  @apply text-center text-gray-500 italic p-4;
-}
-
-.highlight-code {
-  @apply font-mono text-sm bg-gray-200 px-2 py-1 rounded;
+.list li.active {
+  background: #bee3f8;
 }
