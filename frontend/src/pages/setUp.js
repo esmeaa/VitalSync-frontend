@@ -9,11 +9,11 @@ const SetUp = () => {
         height:"",
         weight:"",
         ethnicity:"",
-        goal:"",
+        
     });
 
     const [step, setStep] = useState("gender");
-    const steps = ["gender", "age", "height", "weight", "ethnicity", "goal"];
+    const steps = ["gender", "age", "height", "weight", "ethnicity"];
 
     const currentIndex = steps.indexOf(step);
     const isLastStep = step === steps[steps.length - 1];
@@ -67,11 +67,13 @@ const SetUp = () => {
   return (
     <div>
        
-        <SetUpStep step={step} value={formData} onChange={handleChange}/>
+        <SetUpStep step={step} value={formData[step]} onChange={handleChange}/>
         
-        <button className = "back" onClick={prevStep} disabled = {step === "gender"}>
-            Back
+        {step !== "gender" && (
+         <button className="back" onClick={prevStep}>
+        Back
         </button>
+        )}
         <button className='continue' onClick={nextStep}  disabled={!isStepComplete()}>
             {isLastStep ? "Finish" : "Continue"}
         </button>

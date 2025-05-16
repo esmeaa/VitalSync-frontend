@@ -41,7 +41,7 @@ body {
   font-weight: bold;
 }
 .sidebar {
-  width: 320px;
+  width: 370px;
   background: linear-gradient(to bottom, rgba(187, 134, 252, 0.15), rgba(187, 134, 252, 0.05));
   backdrop-filter: blur(10px);
   padding: 24px;
@@ -149,6 +149,7 @@ body {
   font-weight: 500;
   position: relative;
   overflow: hidden;
+  margin:10px;
 }
 
 .dashboard-links a.active {
@@ -214,8 +215,15 @@ body {
   height:30px;
 }
 .quick-image{
-  width:50x;
-  height:50px;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 16px;
+}
+
+.quick-label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: inherit;
 }
 
 .icon {
@@ -247,9 +255,9 @@ body {
 
 .quick-item {
   background-color: var(--card-bg);
-  padding: 20px;
+  padding: 24px;
   border-radius: 16px;
-  height: 200px;
+  height: 220px;
   text-align: center;
   transition: var(--transition);
   cursor: pointer;
@@ -280,7 +288,7 @@ body {
 
 .quick-item:nth-child(3) {
   background-color: rgba(255, 105, 97, 0.15);
-  color: var(--accent-color);
+  color: var(--secondary-color);
 }
 
 .quick-item:nth-child(4) {
@@ -331,6 +339,7 @@ body {
   transition: var(--transition);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   position: relative;
+
 }
 
 .card:hover {

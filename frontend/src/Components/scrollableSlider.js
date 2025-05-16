@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./scrollableSlider.css"; 
 
 const ScrollableSlider = ({ min, max, interval, unit, onChange }) => {
-  const [selectedValue, setSelectedValue] = useState(min);
+  const [selectedValue, setSelectedValue] = useState((min+max)/2);
   const sliderRef = useRef(null);
 
   const generateNumbers = () => {
