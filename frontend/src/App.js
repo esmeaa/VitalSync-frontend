@@ -6,7 +6,7 @@
 // import ProfilePage from './pages/profilepage';
 // import EditProfilePage from './pages/EditProfilePage';
 // import MealPlans from './pages/MealPlans';
-
+//import GroupsPage from './pages/GroupsPage'; 
 // function App() {
 //   return (
 //     <div className="App">
@@ -20,7 +20,7 @@
 //           <li><Link to="/ProfilePage" className="nav-link">Go to ProfilePage</Link></li>
 //           <li><Link to="/EditProfilePage" className="nav-link">Go to EditProfilePage</Link></li>
 //           <li><Link to="/MealPlans" className="nav-link">Go to MealPlans</Link></li>
-
+//          <li><Link to="/GroupsPage" className="nav-link">Go to Groups</Link></li>
 
 //         </ul>
 
@@ -33,6 +33,7 @@
 //        <Route path="/ProfilePage" element={<ProfilePage /> }/>
 //        <Route path="/EditProfilePage" element={<EditProfilePage /> }/>
 //        <Route path="/MealPlans" element={<MealPlans /> }/>
+//        <Route path="/GroupsPage" element={<GroupsPage />} /> 
 // 	    </Routes>
 
 //     </div>
