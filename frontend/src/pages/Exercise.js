@@ -87,7 +87,7 @@ const Exercise = () => {
             )}
 
             <div className="exercise-history-button">
-              <button onClick={() => window.location.href = "/exercise-history"} className="primary-btn">
+              <button onClick={() => window.location.href = "/ExerciseHistory"} className="primary-btn">
                 View Full Exercise History
               </button>
             </div>
