@@ -231,3 +231,4 @@ app.post("/api/diet-log", async (req, res) => {
 
     res.status(200).json({ message: "Diet log saved" });
 });
+
