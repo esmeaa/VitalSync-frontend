@@ -51,7 +51,7 @@ import AuthPage from './pages/AuthPage';
 import ProfilePage from './pages/profilepage';
 import EditProfilePage from './pages/EditProfilePage';
 // import MealPlans from './pages/MealPlans';    
-import DietCapture from './Components/DietCapture';
+import DietCapture from './Components/DietCapture'
 import RegisterPage from './pages/RegisterPage';
 
 
@@ -68,6 +68,7 @@ function App() {
         <Route path="/EditProfilePage" element={<EditProfilePage />} />
         <Route path="/DietCapture" element={<DietCapture />} />
         <Route path="/Register" element={<RegisterPage />} />
+        {/* Add other routes as needed */}
 
       </Routes>
     </div>

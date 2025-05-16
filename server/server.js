@@ -290,27 +290,27 @@ app.post("/api/diet-log", async (req, res) => {
 //     }
 // });
   
-app.get("/api/diet-logs/:user_name", async (req, res) => {
-    const { user_name } = req.params;
+router.get("/diet-log", async (req, res) => {
+    const user_name = req.query.user_name;
+
+    if (!user_name) {
+        return res.status(400).json({ error: "Missing user_name query parameter" });
+    }
 
     try {
-        const result = await pool.query(
-            `SELECT
-          meal_type,
-          array_agg(fi.name) AS foods,
-          SUM(calories) AS total_calories
+        const query = `
+        SELECT dl.id, fi.name AS food_name, dl.calories, dl.meal_type, dl.logged_at
         FROM diet_logs dl
         JOIN food_items fi ON dl.food_item_id = fi.id
-        WHERE LOWER(user_name) = LOWER($1)
-        GROUP BY meal_type
-        ORDER BY meal_type;`,
-            [user_name]
-        );
-        console.log('DB result:', result.rows); // <-- DEBUG
-        res.json(result.rows);
+        WHERE dl.user_name = $1
+        ORDER BY dl.logged_at DESC
+      `;
+
+        const { rows } = await pool.query(query, [user_name]);
+
+        res.json(rows);
     } catch (err) {
-        console.error('DB query error:', err);
+        console.error("Error fetching diet logs:", err);
         res.status(500).json({ error: "Internal server error" });
     }
 });
-  
