@@ -6,7 +6,7 @@ const GroupsPage = () => {
   const [groupName, setGroupName] = useState("");
   const [userEmail, setUserEmail] = useState(localStorage.getItem("username") || "");
   const [joinedGroupId, setJoinedGroupId] = useState(null);
-  const BACKEND_URL = "http://localhost:3000";
+  const BACKEND_URL = "http://localhost:3001";
 
   useEffect(() => {
     fetch(`${BACKEND_URL}/api/groups`)
