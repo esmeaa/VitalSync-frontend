@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import './DietCapture.css';
 
 const DietCapture = () => {
+    const [showMainContent, setShowMainContent] = useState(false);
     const [foodList, setFoodList] = useState([]);
     const [selectedFood, setSelectedFood] = useState("");
     const [customFood, setCustomFood] = useState("");
@@ -46,43 +47,57 @@ const DietCapture = () => {
     };
 
     return (
-        <div className="diet-capture">
-            <div className="diet-capture-box">
-                <h2>Log your Meal</h2>
-                <p className="subtitle">Register Your Meal with VitalSync!</p>
+        <>
+            {!showMainContent ? (
+                <div className="diet-intro">
+                    <div className="diet-intro-overlay">
+                        <h2 className="section-title">Log Your Meals</h2>
+                        <p className="section-desc">Track food, calories, and nutrition</p>
+                        <button className="primary-btn" onClick={() => setShowMainContent(true)}>
+                            Get Started
+                        </button>
+                    </div>
+                </div>
+            ) : (
+                <div className="diet-capture">
+                    <div className="diet-capture-box">
+                        <h2>Log your Meal</h2>
+                        <p className="subtitle">Register Your Meal with VitalSync!</p>
 
-                <select value={selectedFood} onChange={e => setSelectedFood(e.target.value)}>
-                    <option value="">-- Select food/drink --</option>
-                    {foodList.map(item => (
-                        <option key={item.id} value={item.id}>{item.name}</option>
-                    ))}
-                </select>
+                        <select value={selectedFood} onChange={e => setSelectedFood(e.target.value)}>
+                            <option value="">-- Select food/drink --</option>
+                            {foodList.map(item => (
+                                <option key={item.id} value={item.id}>{item.name}</option>
+                            ))}
+                        </select>
 
-                <input
-                    type="text"
-                    placeholder="Add custom food"
-                    value={customFood}
-                    onChange={e => setCustomFood(e.target.value)}
-                />
-                <button onClick={addCustomFood}>Add Custom Food</button>
+                        <input
+                            type="text"
+                            placeholder="Add custom food"
+                            value={customFood}
+                            onChange={e => setCustomFood(e.target.value)}
+                        />
+                        <button onClick={addCustomFood}>Add Custom Food</button>
 
-                <input
-                    type="number"
-                    placeholder="Calories"
-                    value={calories}
-                    onChange={e => setCalories(e.target.value)}
-                />
+                        <input
+                            type="number"
+                            placeholder="Calories"
+                            value={calories}
+                            onChange={e => setCalories(e.target.value)}
+                        />
 
-                <select value={mealType} onChange={e => setMealType(e.target.value)}>
-                    <option value="Breakfast">Breakfast</option>
-                    <option value="Lunch">Lunch</option>
-                    <option value="Dinner">Dinner</option>
-                    <option value="Snack">Snack</option>
-                </select>
+                        <select value={mealType} onChange={e => setMealType(e.target.value)}>
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Lunch">Lunch</option>
+                            <option value="Dinner">Dinner</option>
+                            <option value="Snack">Snack</option>
+                        </select>
 
-                <button onClick={submitLog}>Submit</button>
-            </div>
-        </div>
+                        <button onClick={submitLog}>Submit</button>
+                    </div>
+                </div>
+            )}
+        </>
     );
 };
 
