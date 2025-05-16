@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./scrollableSlider.css"; 
 
-const ScrollableSlider = ({ min, max, interval, unit }) => {
+const ScrollableSlider = ({ min, max, interval, unit, onChange }) => {
   const [selectedValue, setSelectedValue] = useState(min);
   const sliderRef = useRef(null);
 
@@ -19,6 +19,7 @@ const ScrollableSlider = ({ min, max, interval, unit }) => {
       const index = Math.round(scrollX / 60); // Adjust based on item width
       const newValue = generateNumbers()[index] || selectedValue;
       setSelectedValue(newValue);
+      if (onChange) onChange (newValue);
     }
   };
 
@@ -61,6 +62,6 @@ const ScrollableSlider = ({ min, max, interval, unit }) => {
     </div>
   );
 };
-console.log("ScrollableSlider is rendering");
+
 
 export default ScrollableSlider;

@@ -131,7 +131,7 @@ button {
 }
 
 button:hover {
-  background-color: var(--lime-green);
+
   color: var(--black);
 }
 

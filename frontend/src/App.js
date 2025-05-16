@@ -53,9 +53,6 @@ import EditProfilePage from './pages/EditProfilePage';
 // import MealPlans from './pages/MealPlans';    
 import DietCapture from './Components/DietCapture';
 import RegisterPage from './pages/RegisterPage';
-import Home from './pages/Home';
-import DietLogsPage from './DietLogsPage'; // Import the DietLogsPage component
-
 
 
 function App() {
@@ -71,10 +68,6 @@ function App() {
         <Route path="/EditProfilePage" element={<EditProfilePage />} />
         <Route path="/DietCapture" element={<DietCapture />} />
         <Route path="/Register" element={<RegisterPage />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/DietLogs" element={<DietLogsPage />} />
-        {/* <Route path="/MealPlans" element={<MealPlans />} /> */}
-
 
       </Routes>
     </div>
