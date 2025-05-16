@@ -59,31 +59,41 @@ const Home = () => {
             <h1>Hi, Madison</h1>
             <p>It's time to challenge your limits.</p>
           </div>
+          <Link to="/EditProfilePage" className="active">
           <div className="main-icons">
            <img src={profileIcon} className='profileIcon'></img>
-           <label>Profile</label>
-            
+           <label>Edit Profile</label>
           </div>
+          </Link>
         </header>
 
         <section className="quick-access">
-      
+        <Link to="/GroupsPage" className="active">
           <div className="quick-item">
+          
             <img src={Workout} className="quick-image"></img>
             <span className="quick-label">My Exercise History</span>
+            
           </div>
+          </Link>
+          <Link to="/DietCapture" className="active">
           <div className="quick-item">
           <img src={food} className="quick-image"></img>
             <span className="quick-label">Food</span>
           </div>
+          </Link>
+          <Link to="/GroupsPage" className="active">
           <div className="quick-item">
             <img src={community} className="quick-image"></img>
             <span className="quick-label">Community</span>
           </div>
+          </Link>
+          <Link to="/Goals" className="active">
           <div className="quick-item">
           <img src={goals} className="quick-image"></img>
             <span className="quick-label">Goals</span>
           </div>
+          </Link>
         </section>
         
 
