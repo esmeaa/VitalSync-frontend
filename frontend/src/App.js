@@ -51,7 +51,7 @@ import AuthPage from './pages/AuthPage';
 import ProfilePage from './pages/profilePage';
 import EditProfilePage from './pages/EditProfilePage';
 // import MealPlans from './pages/MealPlans';    
-import DietCapture from './Components/DietCapture';
+import DietCapture from './Components/DietCapture'
 import RegisterPage from './pages/RegisterPage';
 import Home from './pages/Home';
 
