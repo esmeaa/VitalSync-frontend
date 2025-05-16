@@ -1,87 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Exercise.css';
 
 const Exercise = () => {
   const [showMainContent, setShowMainContent] = useState(false);
-
   const [exerciseType, setExerciseType] = useState('');
   const [duration, setDuration] = useState('');
   const [distance, setDistance] = useState('');
   const [date, setDate] = useState('');
-  const [exerciseHistory, setExerciseHistory] = useState([]);
-  const [editingId, setEditingId] = useState(null);
-
-  const BACKEND_URL = 'http://localhost:5000';
-
-  useEffect(() => {
-    const fetchExercises = async () => {
-      try {
-        const response = await fetch(`${BACKEND_URL}/api/exercises`);
-        const data = await response.json();
-        setExerciseHistory(data);
-      } catch (error) {
-        console.error('Failed to fetch exercises:', error);
-      }
-    };
-    fetchExercises();
-  }, []);
+  const [lastAdded, setLastAdded] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const entry = { exerciseType, duration, distance, date };
-
+  
+    const newEntry = {
+      exerciseType,
+      duration,
+      distance,
+      date,
+    };
+  
     try {
-      if (editingId) {
-        const response = await fetch(`${BACKEND_URL}/api/exercises/${editingId}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(entry),
-        });
-        const updatedEntry = await response.json();
-        updatedEntry.id = updatedEntry.id || editingId;
-        setExerciseHistory((prev) =>
-          prev.map((e) => (e.id === editingId ? updatedEntry : e))
-        );
-        setEditingId(null);
+      const response = await fetch("http://localhost:5000/api/exercises", { // CHANGE BACKEND
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newEntry),
+      });
+  
+      if (response.ok) {
+        const saved = await response.json();
+        setLastAdded(saved); 
       } else {
-        const response = await fetch(`${BACKEND_URL}/api/exercises`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(entry),
-        });
-        const newEntry = await response.json();
-        newEntry.id = newEntry.id || Date.now();
-        setExerciseHistory([newEntry, ...exerciseHistory]);
+        console.error("Failed to save exercise");
       }
-
-      setExerciseType('');
-      setDuration('');
-      setDistance('');
-      setDate('');
-    } catch (error) {
-      console.error('Error saving exercise:', error);
+    } catch (err) {
+      console.error("Error saving exercise:", err);
     }
+  
+    // Clear form
+    setExerciseType('');
+    setDuration('');
+    setDistance('');
+    setDate('');
   };
-
-  const handleEdit = (id) => {
-    const ex = exerciseHistory.find((e) => e.id === id);
-    if (ex) {
-      setExerciseType(ex.exerciseType);
-      setDuration(ex.duration);
-      setDistance(ex.distance);
-      setDate(ex.date);
-      setEditingId(id);
-    }
-  };
-
-  const handleDelete = async (id) => {
-    try {
-      await fetch(`${BACKEND_URL}/api/exercises/${id}`, { method: 'DELETE' });
-      setExerciseHistory(exerciseHistory.filter((e) => e.id !== id));
-    } catch (error) {
-      console.error('Error deleting exercise:', error);
-    }
-  };
+  
 
   return (
     <>
@@ -97,7 +58,7 @@ const Exercise = () => {
         </div>
       ) : (
         <div className="exercise-container">
-          <h2>{editingId ? 'Edit Exercise' : 'Log Exercise'}</h2>
+          <h2>Log Exercise</h2>
           <form onSubmit={handleSubmit} className="exercise-form">
             <label>Exercise Type:</label>
             <select value={exerciseType} onChange={(e) => setExerciseType(e.target.value)} required>
@@ -117,22 +78,26 @@ const Exercise = () => {
             <label>Date:</label>
             <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
 
-            <button type="submit">{editingId ? 'Update Exercise' : 'Add Exercise'}</button>
+            <button type="submit">Add Exercise</button>
           </form>
 
-          <div className="exercise-history">
-            <h3>Exercise History</h3>
-            <ul>
-              {exerciseHistory.map((entry) => (
-                <li key={entry.id}>
-                  <div>{entry.date} – {entry.exerciseType}, {entry.duration} mins, {entry.distance} km</div>
-                  <div className="goal-actions">
-                    <button onClick={() => handleEdit(entry.id)}>Edit</button>
-                    <button onClick={() => handleDelete(entry.id)} className="delete-button">Delete</button>
-                  </div>
-                </li>
-              ))}
-            </ul>
+          {lastAdded && (
+            <div className="exercise-card">
+              <div className="exercise-card-header">
+                <h3>✅ Exercise Logged</h3>
+              </div>
+              <div className="exercise-card-body">
+                <p><strong>{lastAdded.exerciseType}</strong></p>
+                <p>⏱ {lastAdded.duration} min &nbsp;&nbsp; 📏 {lastAdded.distance} km</p>
+                <p>📅 {lastAdded.date}</p>
+              </div>
+            </div>
+          )}
+
+          <div className="exercise-history-button">
+            <button onClick={() => window.location.href = "/exercise-history"} className="primary-btn">
+              View Full Exercise History
+            </button>
           </div>
         </div>
       )}

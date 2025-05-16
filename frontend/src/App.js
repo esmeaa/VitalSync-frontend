@@ -53,8 +53,9 @@ import ProfilePage from './pages/profilepage';
 import EditProfilePage from './pages/EditProfilePage';
 import MealPlans from './pages/MealPlans';
 import GroupsPage from './pages/GroupsPage';
-import ExercisePage from './pages/Exercise';
-import GoalsPage from './pages/Goals';
+import Exercise from './pages/Exercise';
+import Goals from './pages/Goals';
+import ExerciseHistory from './pages/ExerciseHistory';
 import { Link } from 'react-router-dom';
 
 
@@ -71,8 +72,8 @@ function App() {
           <li><Link to="/ProfilePage" className="nav-link">Go to ProfilePage</Link></li>
           <li><Link to="/EditProfilePage" className="nav-link">Go to EditProfilePage</Link></li>
           <li><Link to="/MealPlans" className="nav-link">Go to MealPlans</Link></li>
-          <li><Link to="/ExercisePage" className="nav-link">Go to Exercise page</Link></li>
-          <li><Link to="/GoalsPage" className="nav-link">Go to Goals page</Link></li>
+          <li><Link to="/Exercise" className="nav-link">Go to Exercise page</Link></li>
+          <li><Link to="/Goals" className="nav-link">Go to Goals page</Link></li>
           <li><Link to="/GroupsPage" className="nav-link">Go to Groups page</Link></li>
 
 
@@ -87,9 +88,11 @@ function App() {
        <Route path="/ProfilePage" element={<ProfilePage /> }/>
        <Route path="/EditProfilePage" element={<EditProfilePage /> }/>
        <Route path="/MealPlans" element={<MealPlans /> }/>
-       <Route path="/ExercisePage" element={<ExercisePage /> }/>
-       <Route path="/GoalsPage" element={<GoalsPage /> }/>
+       <Route path="/Exercise" element={<Exercise /> }/>
+       <Route path="/Goals" element={<Goals /> }/>
        <Route path="/GroupsPage" element={<GroupsPage /> }/>
+       <Route path="/exercise-history" element={<ExerciseHistory />} />
+
 	    </Routes>
       
     </div>
