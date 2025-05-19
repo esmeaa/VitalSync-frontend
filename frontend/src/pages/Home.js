@@ -100,7 +100,58 @@ const Home = () => {
           </div>
           </Link>
         </section>
+        <section className="articles">
+          <div className="section-header">
+            <h3>Articles & Tips</h3>
+            <a href="#">View All</a>
+          </div>
+          <div className="cards">
+            <a
+             href="https://www.puregym.com/blog/a-beginners-guide-to-supplements/"
+             target="_blank"
+             rel="noopener noreferrer"
+             className="card-link">
+            <div className="card">
+              <img
+                src="https://images.unsplash.com/photo-1556910103-1c02745aae4d"
+                alt="Supplement Guide"
+              />
+              <div className="card-info">
+                <h4>Supplement Guide For Beginners</h4>
+                <p>Essential nutrients to boost your fitness journey</p>
+              </div>
+            </div>
+            </a>
+            <a
+             href="https://greatist.com/fitness/15-minute-full-body-workout"
+             target="_blank"
+             rel="noopener noreferrer"
+             className="card-link">
+            <div className="card">
+              <img
+                src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd"
+                alt="Daily Routines"
+              />
+              <div className="card-info">
+                <h4>15 Quick & Effective Daily Routines</h4>
+                <p>Simple exercises to incorporate into your busy schedule</p>
+              </div>
+            </div>
+            </a>
+          </div>
+        </section>
         
+        <section className="weekly-challenge">
+          <div>
+            <h3>Weekly Challenge</h3>
+            <p><strong>Plank With Hip Twist</strong> – 3 sets of 30 seconds. Focus on form!</p>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1616803689943-5601631c7fec"
+            alt="Weekly Challenge"
+            className="challenge-img"
+          />
+        </section>
 
         <section className="recommendations">
           <div className="section-header">
@@ -149,46 +200,8 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="weekly-challenge">
-          <div>
-            <h3>Weekly Challenge</h3>
-            <p>Plank With Hip Twist</p>
-          </div>
-          <img
-            src="https://images.unsplash.com/photo-1616803689943-5601631c7fec"
-            alt="Weekly Challenge"
-            className="challenge-img"
-          />
-        </section>
+    
 
-        <section className="articles">
-          <div className="section-header">
-            <h3>Articles & Tips</h3>
-            <a href="#">View All</a>
-          </div>
-          <div className="cards">
-            <div className="card">
-              <img
-                src="https://images.unsplash.com/photo-1556910103-1c02745aae4d"
-                alt="Supplement Guide"
-              />
-              <div className="card-info">
-                <h4>Supplement Guide For Beginners</h4>
-                <p>Essential nutrients to boost your fitness journey</p>
-              </div>
-            </div>
-            <div className="card">
-              <img
-                src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd"
-                alt="Daily Routines"
-              />
-              <div className="card-info">
-                <h4>15 Quick & Effective Daily Routines</h4>
-                <p>Simple exercises to incorporate into your busy schedule</p>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
     </div>
   )

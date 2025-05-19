@@ -393,7 +393,10 @@ body {
 .card-info span {
   font-size: 25px;
 }
-
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
 .weekly-challenge {
   background: linear-gradient(to right, rgba(187, 134, 252, 0.1), rgba(187, 134, 252, 0.2));
   padding: 25px;
@@ -405,34 +408,39 @@ body {
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  height: 250px;
 }
 
 .weekly-challenge h3 {
-  font-size: 28px;
+  font-size: 38px;
   font-weight: 700;
   color: var(--secondary-color);
   margin-bottom: 10px;
   line-height: 1.2;
+  margin-left:20px;
 }
 
 .weekly-challenge p {
-  font-size: 16px;
+  font-size: 23px;
   color: var(--text-primary);
-  max-width: 60%;
+  
 }
 
 .challenge-img {
-  width: 160px;
-  height: 140px;
+  width: 200px;
+  height: 180px;
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: var(--transition);
+  margin-right: 40px;
 }
 
 .challenge-img:hover {
   transform: scale(1.05);
 }
+
+
 
 /* Media Queries */
 @media (max-width: 1200px) {
