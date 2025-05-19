@@ -95,6 +95,7 @@ const RegisterPage = () => {
 
             const data = await response.json();
             alert(data.message || `Account created for ${formData.username}`);
+            localStorage.setItem("username", formData.username);
             navigate("/setUp");// Redirect to login page
         } catch (err) {
             setError(err.message);
