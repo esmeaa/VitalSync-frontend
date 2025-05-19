@@ -18,7 +18,8 @@ function AuthPage() {
     setFormData({
       ...formData,
       [name]: type === "checkbox" ? checked : value
-    });
+    })
+    ;
 
     if (errors[name]) {
       setErrors({
@@ -49,6 +50,8 @@ function AuthPage() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    localStorage.setItem("username", formData.username);
+    navigate("/home");
     if (!validateForm()) return;
 
     try {

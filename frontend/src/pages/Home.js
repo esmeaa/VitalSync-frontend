@@ -11,6 +11,7 @@ import vslogo from "../images/vslogo.png"
 import { Link } from 'react-router-dom'
 
 const Home = () => {
+  const username = localStorage.getItem("username") || "Guest";
   return (
     <div className="dashboard">
       <aside className="sidebar">
@@ -23,7 +24,7 @@ const Home = () => {
             className="avatar"
           />
           <div className="profile-info">
-            <h2>Madison Wilson</h2>
+            <h2>{username}</h2>
 
           </div>
         </div>
@@ -59,7 +60,7 @@ const Home = () => {
       <main className="main">
         <header className="main-header">
           <div>
-            <h1>Hi, Madison</h1>
+            <h1>Hi, {username}</h1>
             <p>Let's improve further today!</p>
           </div>
           <Link to="/EditProfilePage" className="active">
