@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import './DietCapture.css';
 
 const DietCapture = () => {
-    const [showMainContent, setShowMainContent] = useState(false);
+    const [showMainContent, setShowMainContent] = useState(false); 
     const [foodList, setFoodList] = useState([]);
     const [selectedFood, setSelectedFood] = useState("");
     const [customFood, setCustomFood] = useState("");
