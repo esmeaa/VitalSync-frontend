@@ -1,108 +1,83 @@
-/* Container styling */
 .slider-container {
-    margin: 2rem auto;
-    padding: 1rem;
-    max-width: 100%;
-    text-align: center;
-   font-weight: bold;
-    max-height:100%;
-  }
-  
-  /* Label + selected value */
-  .slider-value {
-    font-size: 64px;
-    margin-bottom: 1rem;
-    font-weight: bold;
-  }
-  .unit{
-    color: #afadad;
-  }
-  
-  /* Wrapper to position arrow indicator */
-  .scrollable-slider-wrapper {
-    position: relative;
-    overflow: visible;
-  
-    background-color: #B3A0FF;
-  
-    
-    margin: auto;
-    width: 500px;
-    
-    padding: 0px 70px;
-    
-    
-  }
-  
-  /* Arrow pointing to the selected value */
-  .arrow-indicator {
-    position: relative;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 3rem;
-    color: #FB5959;
-    pointer-events: none;
-    z-index: 1;
-  }
-  
-  /* Scrollable number bar */
-  .scrollable-slider {
-    display: flex;
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
 
-    overflow-x: auto;
-    overflow-y: visible;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-   
-    padding: 1rem 0;
-    gap: 1rem;
-    scrollbar-width: thin;           /* Firefox */
-    scrollbar-color: #999 transparent;
-  }
-  
-  /* WebKit scrollbar (Chrome, Edge, Safari) */
-  .scrollable-slider::-webkit-scrollbar {
-    height: 8px;
-  }
-  .scrollable-slider::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .scrollable-slider::-webkit-scrollbar-thumb {
-    background-color: #bbb;
-    border-radius: 20px;
-  }
-  
-  /* Each number block */
-  .slider-item {
-    flex: 0 0 auto;
-    width: 160px;               /* Increased from 60px */
-    height: 60px;
-    line-height: 60px;
-    margin: 0 10px;            /* Adds spacing between items */
-    color: #232323;
-    text-align: center;
-    font-size: 35px;
-    font-weight: bold;
-    scroll-snap-align: center;
-    cursor: grab;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .slider-item.active {
-    
-    color: white;
-   
-    
-    transform: scale(1.3);
-    
-    border-left: white;
-    border-right: white;
-    border-top:#B3A0FF;
-    border-bottom: #B3A0FF;
-    border-width:2px;
-    border-style: solid;
+.slider-value {
+  font-size: 64px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
 
-    
-  }
+.unit {
+  color: #afadad;
+}
+
+.scrollable-slider-wrapper {
+  position: relative;
+  overflow: visible;
+  background-color: #8a2be2; /* updated color */
+  margin: auto;
+  width: 500px;
+  padding: 0px 70px;
+  border-radius: 12px;
+}
+
+.arrow-indicator {
+  position: relative;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  color: #FB5959;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.scrollable-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 1rem 0;
+  gap: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: #999 transparent;
+}
+
+.scrollable-slider::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollable-slider::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollable-slider::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 20px;
+}
+
+.slider-item {
+  flex: 0 0 auto;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  scroll-snap-align: center;
+  cursor: grab;
+  border-radius: 8px;
+}
+
+.slider-item.active {
+  color: white;
+  transform: scale(1.3);
+  border: 3px solid white;
+}
   

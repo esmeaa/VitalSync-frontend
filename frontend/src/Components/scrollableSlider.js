@@ -2,8 +2,9 @@ import React, { useState, useRef, useEffect } from "react";
 import "./scrollableSlider.css"; 
 
 const ScrollableSlider = ({ min, max, interval, unit, onChange }) => {
-  const [selectedValue, setSelectedValue] = useState((min+max)/2);
+  const [selectedValue, setSelectedValue] = useState((min + max) / 2);
   const sliderRef = useRef(null);
+  const itemWidth = 70; // Adjust based on CSS width for .slider-item
 
   const generateNumbers = () => {
     let numbers = [];
@@ -16,17 +17,17 @@ const ScrollableSlider = ({ min, max, interval, unit, onChange }) => {
   const handleScroll = () => {
     if (sliderRef.current) {
       const scrollX = sliderRef.current.scrollLeft;
-      const index = Math.round(scrollX / 60); // Adjust based on item width
+      const index = Math.round(scrollX / itemWidth);
       const newValue = generateNumbers()[index] || selectedValue;
       setSelectedValue(newValue);
-      if (onChange) onChange (newValue);
+      if (onChange) onChange(newValue);
     }
   };
 
   useEffect(() => {
+    const index = generateNumbers().indexOf(selectedValue);
     if (sliderRef.current) {
-      const initialIndex = generateNumbers().indexOf(selectedValue);
-      sliderRef.current.scrollLeft = initialIndex * 60; // Adjust for width
+      sliderRef.current.scrollLeft = index * itemWidth;
     }
   }, []);
 
@@ -36,14 +37,7 @@ const ScrollableSlider = ({ min, max, interval, unit, onChange }) => {
         {selectedValue} <span className="unit">{unit}</span>
       </p>
       <div className="arrow-indicator">▲</div>
-      
-
-      
-
       <div className="scrollable-slider-wrapper">
-    
-        
-
         <div
           className="scrollable-slider"
           ref={sliderRef}
@@ -62,6 +56,5 @@ const ScrollableSlider = ({ min, max, interval, unit, onChange }) => {
     </div>
   );
 };
-
 
 export default ScrollableSlider;

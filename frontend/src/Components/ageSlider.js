@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./ageSlider.css"; // Import the CSS for styling
+import "./ageSlider.css";
 
-const AgeSlider = ({ min, max, interval, unit, onChange}) => {
+const AgeSlider = ({ min, max, interval, unit, onChange }) => {
   const [selectedValue, setSelectedValue] = useState((min + max) / 2);
   const sliderRef = useRef(null);
+  const itemWidth = 70;
 
   const generateNumbers = () => {
     let numbers = [];
@@ -16,19 +17,17 @@ const AgeSlider = ({ min, max, interval, unit, onChange}) => {
   const handleScroll = () => {
     if (sliderRef.current) {
       const scrollX = sliderRef.current.scrollLeft;
-      const itemWidth = 100;
-      const index = Math.round(scrollX / itemWidth); // Adjust based on item width
+      const index = Math.round(scrollX / itemWidth);
       const newValue = generateNumbers()[index] || selectedValue;
       setSelectedValue(newValue);
-      if (onChange)onChange(newValue)
+      if (onChange) onChange(newValue);
     }
   };
 
   useEffect(() => {
+    const index = generateNumbers().indexOf(selectedValue);
     if (sliderRef.current) {
-      const initialIndex = generateNumbers().indexOf(selectedValue);
-      const itemWidth = 100; 
-      sliderRef.current.scrollLeft = initialIndex * itemWidth; // Adjust for width
+      sliderRef.current.scrollLeft = index * itemWidth;
     }
   }, []);
 
@@ -38,14 +37,7 @@ const AgeSlider = ({ min, max, interval, unit, onChange}) => {
         {selectedValue} <span className="unit">{unit}</span>
       </p>
       <div className="arrow-indicator">▲</div>
-      
-
-      
-
       <div className="scrollable-slider-wrapper">
-    
-        
-
         <div
           className="scrollable-slider"
           ref={sliderRef}
@@ -64,6 +56,5 @@ const AgeSlider = ({ min, max, interval, unit, onChange}) => {
     </div>
   );
 };
-console.log("ageSlider is rendering");
 
 export default AgeSlider;
