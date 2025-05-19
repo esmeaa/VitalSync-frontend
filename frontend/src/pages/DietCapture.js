@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import './DietCapture.css';
 
 const DietCapture = () => {
-    const [showMainContent, setShowMainContent] = useState(false);
     const [foodList, setFoodList] = useState([]);
     const [selectedFood, setSelectedFood] = useState("");
     const [customFood, setCustomFood] = useState("");
@@ -35,16 +34,15 @@ const DietCapture = () => {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    user_name: localStorage.getItem("username"),
-                    food_item_id: selectedFood,
+                    user_name: localStorage.getItem("user_name"),
+                    food_item_id: parseInt(selectedFood),
                     calories: parseInt(calories),
                     meal_type: mealType,
                 }),
             });
             if (res.ok) {
                 const savedLog = await res.json();
-                setLastAddedDiet(savedLog);  
-                alert("Log saved!");
+                setLastAddedDiet(savedLog);
                 setSelectedFood("");
                 setCalories("");
                 setMealType("Breakfast");
@@ -58,6 +56,7 @@ const DietCapture = () => {
     };
 
     return (
+<<<<<<< HEAD
         <>
             {!showMainContent ? (
                 <div className="diet-intro">
@@ -74,41 +73,64 @@ const DietCapture = () => {
                     <div className="diet-capture-box">
                         <h2>Log your Meal</h2>
                         <p className="subtitle">Register Your Meal with VitalSync!</p>
+=======
+        <div className="diet-capture">
+            <div className="diet-capture-box">
+                <h2>Log your Meal</h2>
+                <p className="subtitle">Food/Drink types, Custom items, Calories and defined set of meal types </p>
+>>>>>>> ca18c60bd3e0c0177f7a520c374c9ede7d7509da
 
-                        <select value={selectedFood} onChange={e => setSelectedFood(e.target.value)}>
-                            <option value="">-- Select food/drink --</option>
-                            {foodList.map(item => (
-                                <option key={item.id} value={item.id}>{item.name}</option>
-                            ))}
-                        </select>
+                <select value={selectedFood} onChange={e => setSelectedFood(e.target.value)}>
+                    <option value="">-- Select food/drink --</option>
+                    {foodList.map(item => (
+                        <option key={item.id} value={item.id}>{item.name}</option>
+                    ))}
+                </select>
 
-                        <input
-                            type="text"
-                            placeholder="Add custom food"
-                            value={customFood}
-                            onChange={e => setCustomFood(e.target.value)}
-                        />
-                        <button onClick={addCustomFood}>Add Custom Food</button>
+                <input
+                    type="text"
+                    placeholder="Add custom food"
+                    value={customFood}
+                    onChange={e => setCustomFood(e.target.value)}
+                />
+                <button onClick={addCustomFood}>Add Custom Food</button>
 
-                        <input
-                            type="number"
-                            placeholder="Calories"
-                            value={calories}
-                            onChange={e => setCalories(e.target.value)}
-                        />
+                <input
+                    type="number"
+                    placeholder="Calories"
+                    value={calories}
+                    onChange={e => setCalories(e.target.value)}
+                />
 
-                        <select value={mealType} onChange={e => setMealType(e.target.value)}>
-                            <option value="Breakfast">Breakfast</option>
-                            <option value="Lunch">Lunch</option>
-                            <option value="Dinner">Dinner</option>
-                            <option value="Snack">Snack</option>
-                        </select>
+                <select value={mealType} onChange={e => setMealType(e.target.value)}>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Snack">Snack</option>
+                </select>
 
+<<<<<<< HEAD
                         <button onClick={submitLog}>Submit</button>
                     </div>
                 </div>
             )}
         </>
+=======
+                <button onClick={submitLog}>Submit</button>
+
+                {/* Display last added diet log */}
+                {lastAddedDiet && (
+                    <div className="diet-log-card">
+                        <h3>Diet Log Added</h3>
+                        <p><strong>Food:</strong> {lastAddedDiet.food_name || lastAddedDiet.food_item_id}</p>
+                        <p><strong>Calories:</strong> {lastAddedDiet.calories} kcal</p>
+                        <p><strong>Meal Type:</strong> {lastAddedDiet.meal_type}</p>
+                        <p><strong>Date:</strong> {new Date(lastAddedDiet.created_at).toLocaleString()}</p>
+                    </div>
+                )}
+            </div>
+        </div>
+>>>>>>> ca18c60bd3e0c0177f7a520c374c9ede7d7509da
     );
 };
 
