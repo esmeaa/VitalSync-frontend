@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import SetUpStep from '../Components/SetUpStep';
+import { useNavigate } from "react-router-dom";
 import "./setUp.css";
 
 const SetUp = () => {
@@ -17,6 +18,8 @@ const SetUp = () => {
 
     const currentIndex = steps.indexOf(step);
     const isLastStep = step === steps[steps.length - 1];
+
+    const navigate = useNavigate();
 
     const handleChange = (field, value) => {
         setFormData(prev => ({ ...prev, [field]: value }));
@@ -44,6 +47,7 @@ const SetUp = () => {
                 const data = await response.json();
                 console.log("Server Response:", data);
                 alert("Setup completed! Your BMI feedback: " + data.feedback);
+                navigate("/home");
             } catch (error) {
                 console.error("Submission error:", error);
                 alert("An error occurred while submitting your data.");

@@ -12,6 +12,9 @@ import Goals from './pages/Goals';
 import GroupsPage from './pages/GroupsPage';
 import Exercise from './pages/Exercise';
 import Home from './pages/Home';
+import ExerciseHistory from './pages/ExerciseHistory';
+import DietHistory from './pages/DietHistory';
+
 
 function App() {
   return (
@@ -29,7 +32,8 @@ function App() {
         <Route path="/GroupsPage" element={<GroupsPage />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/Exercise" element={<Exercise />} />
-        {/* <Route path="/ExerciseHistory" element={<ExerciseHistory />} /> */}
+        <Route path="/ExerciseHistory" element={<ExerciseHistory />} />
+        <Route path="/DietHistory" element={<DietHistory />} />
 
 
 

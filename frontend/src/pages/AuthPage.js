@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./AuthPage.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const EXPRESS_SERVER_URL = "http://localhost:3001";
 
@@ -72,7 +72,7 @@ function AuthPage() {
       const data = await res.json();
       if (data.login === "success") {
         localStorage.setItem("user_name", formData.username);
-        navigate("/ProfilePage");
+        navigate("/Home");
       }
     } catch (error) {
       alert("An error occurred during login.");
@@ -132,9 +132,12 @@ function AuthPage() {
                 </div>
 
                 <button type="submit" className="submit-button">
-                  Sign in →
+                  Sign in
                 </button>
               </form>
+              <p className="register-text">
+                Don't have an account? <Link to="/Register" className="register-link">Register here</Link>
+              </p>
             </div>
           </div>
 

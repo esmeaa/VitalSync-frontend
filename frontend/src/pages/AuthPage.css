@@ -228,3 +228,23 @@ body {
     padding: 1.5rem;
   }
 }
+
+.register-link-container {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+/* The actual register link */
+.register-link {
+  color: #c084fc;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.register-link:hover {
+  color: #a855f7;
+}

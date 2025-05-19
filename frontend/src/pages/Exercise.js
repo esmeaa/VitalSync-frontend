@@ -3,20 +3,20 @@ import './Exercise.css';
 
 const Exercise = () => {
   const [showMainContent, setShowMainContent] = useState(false);
-  const [exerciseType, setExerciseType] = useState('');
+  const [exercise_type, setExercise_type] = useState('');
   const [duration, setDuration] = useState('');
   const [distance, setDistance] = useState('');
-  const [date, setDate] = useState('');
+  const [exercise_date, setDate] = useState('');
   const [lastAdded, setLastAdded] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newEntry = {
-      exerciseType,
+      exercise_type: exercise_type,
       duration,
       distance,
-      date,
-      user_name: localStorage.getItem('user_name'), 
+      exercise_date: exercise_date,
+      user_name: localStorage.getItem('user_name'),
     };
     try {
       const response = await fetch("http://localhost:3001/api/exercises", {
@@ -33,7 +33,7 @@ const Exercise = () => {
     } catch (err) {
       console.error("Error saving exercise:", err);
     }
-    setExerciseType('');
+    setExercise_type('');
     setDuration('');
     setDistance('');
     setDate('');
@@ -55,9 +55,8 @@ const Exercise = () => {
         <div className="exercise-capture">
           <div className="exercise-capture-box">
             <h2>Log Exercise</h2>
-            <p className="subtitle">Record your physical activities with VitalSync!</p>
             <form onSubmit={handleSubmit} className="exercise-form">
-              <select value={exerciseType} onChange={(e) => setExerciseType(e.target.value)} required>
+              <select value={exercise_type} onChange={(e) => setExercise_type(e.target.value)} required>
                 <option value="">--Select Exercise Type--</option>
                 <option value="Running">Running</option>
                 <option value="Cycling">Cycling</option>
@@ -69,7 +68,7 @@ const Exercise = () => {
 
               <input type="number" placeholder="Distance (km)" value={distance} onChange={(e) => setDistance(e.target.value)} required />
 
-              <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+              <input type="date" value={exercise_date} onChange={(e) => setDate(e.target.value)} required />
 
               <button type="submit">Add Exercise</button>
             </form>
