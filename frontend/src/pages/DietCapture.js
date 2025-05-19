@@ -57,29 +57,10 @@ const DietCapture = () => {
     };
 
     return (
-<<<<<<< HEAD
-        <>
-            {!showMainContent ? (
-                <div className="diet-intro">
-                    <div className="diet-intro-overlay">
-                        <h2 className="section-title">Log Your Meals</h2>
-                        <p className="section-desc">Track food, calories, and nutrition</p>
-                        <button className="primary-btn" onClick={() => setShowMainContent(true)}>
-                            Get Started
-                        </button>
-                    </div>
-                </div>
-            ) : (
-                <div className="diet-capture">
-                    <div className="diet-capture-box">
-                        <h2>Log your Meal</h2>
-                        <p className="subtitle">Register Your Meal with VitalSync!</p>
-=======
         <div className="diet-capture">
             <div className="diet-capture-box">
                 <h2>Log your Meal</h2>
                 <p className="subtitle">Food/Drink types, Custom items, Calories and defined set of meal types </p>
->>>>>>> ca18c60bd3e0c0177f7a520c374c9ede7d7509da
 
                 <select value={selectedFood} onChange={e => setSelectedFood(e.target.value)}>
                     <option value="">-- Select food/drink --</option>
@@ -110,13 +91,6 @@ const DietCapture = () => {
                     <option value="Snack">Snack</option>
                 </select>
 
-<<<<<<< HEAD
-                        <button onClick={submitLog}>Submit</button>
-                    </div>
-                </div>
-            )}
-        </>
-=======
                 <button onClick={submitLog}>Submit</button>
 
                 {/* Display last added diet log */}
@@ -131,7 +105,6 @@ const DietCapture = () => {
                 )}
             </div>
         </div>
->>>>>>> ca18c60bd3e0c0177f7a520c374c9ede7d7509da
     );
 };
 
