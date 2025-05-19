@@ -6,10 +6,6 @@ import SetUp from './pages/setUp';
 import Launch from './pages/launch';
 import AuthPage from './pages/AuthPage';
 import EditProfilePage from './pages/EditProfilePage';
-<<<<<<< HEAD
-// import MealPlans from './pages/MealPlans';     
-=======
->>>>>>> ca18c60bd3e0c0177f7a520c374c9ede7d7509da
 import DietCapture from './pages/DietCapture'
 import RegisterPage from './pages/RegisterPage';
 import Goals from './pages/Goals';
