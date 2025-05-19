@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
   const username = localStorage.getItem("username") || "Guest";
+
   return (
     <div className="dashboard">
       <aside className="sidebar">
@@ -83,7 +84,7 @@ const Home = () => {
           <Link to="/DietHistory" className="active">
           <div className="quick-item">
           <img src={food} className="quick-image"></img>
-            <span className="quick-label">Food Histroy</span>
+            <span className="quick-label">Food History</span>
           </div>
           </Link>
           <Link to="/GroupsPage" className="active">

@@ -1,5 +1,5 @@
 import React from 'react'
-import vsPurple from "../images/logo/vsPurple.png"
+import vsPurple from "../images/logo/vspurple2.png"
 import vsRed from "../images/logo/vsRed.png"
 import runningMan from "../images/logo/runnerTransp.png"
 import './logoAnim.css';
