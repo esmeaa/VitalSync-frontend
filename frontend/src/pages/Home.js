@@ -40,18 +40,19 @@ const Home = () => {
           
           <Link to="/DietCapture" className="active">
             <img src={food} className="nav-icon"></img>
-            <span>Meal Plan</span>
+            <span>Food</span>
           </Link>
+
+          <Link to="/Exercise" className="active">
+            <img src={Workout} className="nav-icon"></img>
+            <span>Exercises</span>
+          </Link> 
           
           <Link to="/GroupsPage" className="active">
             <img src={community} className="nav-icon"></img>
             <span>Communities</span>
           </Link> 
           
-          <Link to="/Exercise" className="active">
-          <img src={Workout} className="nav-icon"></img>
-            <span>Exercises</span>
-          </Link> 
         </nav>
       </aside>
 
@@ -59,7 +60,7 @@ const Home = () => {
         <header className="main-header">
           <div>
             <h1>Hi, Madison</h1>
-            <p>It's time to challenge your limits.</p>
+            <p>Let's improve further today!</p>
           </div>
           <Link to="/EditProfilePage" className="active">
           <div className="main-icons">
@@ -70,18 +71,18 @@ const Home = () => {
         </header>
 
         <section className="quick-access">
-        <Link to="/GroupsPage" className="active">
+        <Link to="/ExerciseHistory" className="active">
           <div className="quick-item">
           
             <img src={Workout} className="quick-image"></img>
-            <span className="quick-label">My Exercise History</span>
+            <span className="quick-label">Exercise History</span>
             
           </div>
           </Link>
-          <Link to="/DietCapture" className="active">
+          <Link to="/DietHistory" className="active">
           <div className="quick-item">
           <img src={food} className="quick-image"></img>
-            <span className="quick-label">Food</span>
+            <span className="quick-label">Food Histroy</span>
           </div>
           </Link>
           <Link to="/GroupsPage" className="active">

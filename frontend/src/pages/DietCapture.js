@@ -36,16 +36,15 @@ const DietCapture = () => {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    user_name: localStorage.getItem("username"),
-                    food_item_id: selectedFood,
+                    user_name: localStorage.getItem("user_name"),
+                    food_item_id: parseInt(selectedFood),
                     calories: parseInt(calories),
                     meal_type: mealType,
                 }),
             });
             if (res.ok) {
                 const savedLog = await res.json();
-                setLastAddedDiet(savedLog);  
-                alert("Log saved!");
+                setLastAddedDiet(savedLog);
                 setSelectedFood("");
                 setCalories("");
                 setMealType("Breakfast");
@@ -64,41 +63,41 @@ const DietCapture = () => {
                 <h2>Log your Meal</h2>
                 <p className="subtitle">Food/Drink types, Custom items, Calories and defined set of meal types </p>
 
-                        <select value={selectedFood} onChange={e => setSelectedFood(e.target.value)}>
-                            <option value="">-- Select food/drink --</option>
-                            {foodList.map(item => (
-                                <option key={item.id} value={item.id}>{item.name}</option>
-                            ))}
-                        </select>
+                <select value={selectedFood} onChange={e => setSelectedFood(e.target.value)}>
+                    <option value="">-- Select food/drink --</option>
+                    {foodList.map(item => (
+                        <option key={item.id} value={item.id}>{item.name}</option>
+                    ))}
+                </select>
 
-                        <input
-                            type="text"
-                            placeholder="Add custom food"
-                            value={customFood}
-                            onChange={e => setCustomFood(e.target.value)}
-                        />
-                        <button onClick={addCustomFood}>Add Custom Food</button>
+                <input
+                    type="text"
+                    placeholder="Add custom food"
+                    value={customFood}
+                    onChange={e => setCustomFood(e.target.value)}
+                />
+                <button onClick={addCustomFood}>Add Custom Food</button>
 
-                        <input
-                            type="number"
-                            placeholder="Calories"
-                            value={calories}
-                            onChange={e => setCalories(e.target.value)}
-                        />
+                <input
+                    type="number"
+                    placeholder="Calories"
+                    value={calories}
+                    onChange={e => setCalories(e.target.value)}
+                />
 
-                        <select value={mealType} onChange={e => setMealType(e.target.value)}>
-                            <option value="Breakfast">Breakfast</option>
-                            <option value="Lunch">Lunch</option>
-                            <option value="Dinner">Dinner</option>
-                            <option value="Snack">Snack</option>
-                        </select>
+                <select value={mealType} onChange={e => setMealType(e.target.value)}>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Snack">Snack</option>
+                </select>
 
                 <button onClick={submitLog}>Submit</button>
 
                 {/* Display last added diet log */}
                 {lastAddedDiet && (
                     <div className="diet-log-card">
-                        <h3>Last Diet Log Added</h3>
+                        <h3>Diet Log Added</h3>
                         <p><strong>Food:</strong> {lastAddedDiet.food_name || lastAddedDiet.food_item_id}</p>
                         <p><strong>Calories:</strong> {lastAddedDiet.calories} kcal</p>
                         <p><strong>Meal Type:</strong> {lastAddedDiet.meal_type}</p>
