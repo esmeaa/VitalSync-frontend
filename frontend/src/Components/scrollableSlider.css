@@ -1,82 +1,47 @@
 .slider-container {
-  margin: 2rem auto;
-  padding: 1rem;
-  max-width: 100%;
-  text-align: center;
-  font-weight: bold;
-}
-
-.slider-value {
-  font-size: 64px;
-  margin-bottom: 1rem;
-  font-weight: bold;
-}
-
-.unit {
-  color: #afadad;
-}
-
-.scrollable-slider-wrapper {
-  position: relative;
-  overflow: visible;
-  background-color: #8a2be2; /* Updated color */
-  margin: auto;
-  width: 500px;
-  padding: 0px 70px;
-  border-radius: 12px;
-}
-
-.arrow-indicator {
-  position: relative;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 3rem;
-  color: #FB5959;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.scrollable-slider {
   display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  padding: 1rem 0;
-  gap: 1rem;
-  scrollbar-width: thin;
-  scrollbar-color: #999 transparent;
+  justify-content: center;
+  margin: 2rem auto;
 }
 
-.scrollable-slider::-webkit-scrollbar {
-  height: 8px;
+.arrow-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #8a2be2;
+  padding: 1.5rem 2.5rem;
+  border-radius: 12px;
+  min-width: 300px;
+  height: 120px;
 }
-.scrollable-slider::-webkit-scrollbar-track {
+
+.arrow-btn {
   background: transparent;
-}
-.scrollable-slider::-webkit-scrollbar-thumb {
-  background-color: #bbb;
-  border-radius: 20px;
-}
-
-.slider-item {
-  flex: 0 0 auto;
-  color: #ffffff;
-  background: transparent;
-  width: 70px;
-  height: 70px;
-  line-height: 70px;
-  text-align: center;
-  font-size: 35px;
-  font-weight: bold;
-  scroll-snap-align: center;
-  cursor: grab;
-  border-radius: 8px;
-}
-
-.slider-item.active {
+  border: none;
   color: white;
-  transform: scale(1.3);
-  border: 3px solid white;
+  font-size: 2rem;
+  cursor: pointer;
+  margin: 0 1.2rem;
+}
+
+.slider-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1rem;
+}
+
+.slider-number {
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+  line-height: 1;
+}
+
+.slider-unit {
+  font-size: 20px;
+  color: #ccc;
+  margin-top: 4px;
 }
   

@@ -1,24 +1,15 @@
 .layout {
-  padding: 60px 70px;
+  padding: 40px 60px;
   margin: 60px auto;
-  max-width: 900px;
   background-color: #232323;
-  border-radius: 12px;
+  border-radius: 8px;
+  text-align: center;
   color: white;
 }
 
-.option-button {
-  width: 280px;
-  height: 280px;
-  background-color: #8a2be2;
-  border: 2px solid white;
-  border-radius: 50%;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.option-button img {
-  height: 100px;
+#title {
+  font-size: 48px;
+  margin-bottom: 40px;
 }
 
 .options {
@@ -26,11 +17,18 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 40px;
-  margin-top: 40px;
 }
 
-.option {
-  text-align: center;
+.option-button {
+  width: 200px;
+  height: 200px;
+  background-color: #8a2be2;
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
 }
 
 .option-selected .option-button {
@@ -39,33 +37,25 @@
   transform: scale(1.05);
 }
 
-#title {
-  font-size: 48px;
-  text-align: center;
-  margin-bottom: 30px;
+.option img {
+  height: 80px;
 }
 
 .button-caption {
-  font-size: 22px;
-  margin-top: 15px;
-  font-weight: 600;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .dropdown {
   background-color: #8a2be2;
   height: 60px;
-  width: 60%;
-  border-radius: 8px;
-  font-size: 18px;
-  color: white;
+  width: 80%;
+  border-radius: 10px;
+  font-size: 1rem;
   border: 2px solid #FB5959;
-  margin: 40px auto;
-  display: block;
-  padding: 0 12px;
-}
-
-.dropdown option {
-  color: black;
+  margin: 20px auto;
+  color: white;
 }
 
 

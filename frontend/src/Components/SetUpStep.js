@@ -6,12 +6,15 @@ import ScrollableSlider from './scrollableSlider';
 import AgeSlider from "./ageSlider";
 
 const SetUpStep = ({ step, value, onChange }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(value || "");
 
   const stepFormat = {
     gender: {
       title: "What's Your Gender?",
-      options: [{ optionName: "Male", icon: male }, { optionName: "Female", icon: female }],
+      options: [
+        { optionName: "Male", icon: male },
+        { optionName: "Female", icon: female },
+      ],
       className: "gender-step",
       displayType: "option-buttons"
     },
@@ -20,7 +23,7 @@ const SetUpStep = ({ step, value, onChange }) => {
       type: "number",
       className: "age-step",
       min: 18,
-      max: 22,
+      max: 100,
       interval: 1,
       unit: "",
       displayType: "slider-age"
@@ -31,7 +34,7 @@ const SetUpStep = ({ step, value, onChange }) => {
       unit: "cm",
       className: "height-step",
       min: 140,
-      max: 190,
+      max: 220,
       interval: 1,
       displayType: "slider"
     },
@@ -41,7 +44,7 @@ const SetUpStep = ({ step, value, onChange }) => {
       unit: "kg",
       className: "weight-step",
       min: 40,
-      max: 90,
+      max: 180,
       interval: 1,
       displayType: "slider"
     },
@@ -58,83 +61,83 @@ const SetUpStep = ({ step, value, onChange }) => {
     }
   };
 
+  const format = stepFormat[step];
+
   return (
-    <div className={`layout ${stepFormat[step]?.className}`} key={step}>
-      <h1 id="title">{stepFormat[step]?.title}</h1>
-      <form>
-        {(() => {
-          switch (stepFormat[step]?.displayType) {
-            case "option-buttons":
-              return (
-                <div className="options">
-                  {stepFormat[step].options.map((option) => (
-                    <div className={`option ${selectedOption === option.optionName ? "option-selected" : ""}`} key={option.optionName}>
-                      <button
-                        className="option-button"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          const selectedValue = option.optionName;
-                          if (selectedOption === selectedValue) {
-                            setSelectedOption(null);
-                            onChange(step, "");
-                          } else {
-                            setSelectedOption(selectedValue);
-                            onChange(step, selectedValue);
-                          }
-                        }}>
-                        {option.icon && <img src={option.icon} alt={option.optionName} id="icon" />}
-                      </button>
-                      <p className="button-caption">{option.optionName}</p>
-                    </div>
-                  ))}
-                </div>
-              );
+    <div className={`layout ${format?.className}`} key={step}>
+      <h1 id='title'>{format?.title}</h1>
+      {(() => {
+        switch (format?.displayType) {
+          case "option-buttons":
+            return (
+              <div className="options">
+                {format.options.map((option) => (
+                  <div
+                    className={`option ${selectedOption === option.optionName ? "option-selected" : ""}`}
+                    key={option.optionName}
+                  >
+                    <button
+                      className="option-button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const selectedValue = option.optionName;
+                        const newValue = selectedOption === selectedValue ? "" : selectedValue;
+                        setSelectedOption(newValue);
+                        onChange(step, newValue);
+                      }}
+                    >
+                      {option.icon && <img src={option.icon} alt={option.optionName} id="icon" />}
+                    </button>
+                    <p className="button-caption">{option.optionName}</p>
+                  </div>
+                ))}
+              </div>
+            );
 
-            case "slider":
-              return (
-                <ScrollableSlider
-                  min={stepFormat[step].min}
-                  max={stepFormat[step].max}
-                  interval={stepFormat[step].interval}
-                  unit={stepFormat[step].unit}
-                  onChange={(value) => onChange(step, value)}
-                />
-              );
+          case "slider":
+            return (
+              <ScrollableSlider
+                min={format.min}
+                max={format.max}
+                interval={format.interval}
+                unit={format.unit}
+                onChange={(val) => onChange(step, val)}
+              />
+            );
 
-            case "slider-age":
-              return (
-                <AgeSlider
-                  min={stepFormat[step].min}
-                  max={stepFormat[step].max}
-                  interval={stepFormat[step].interval}
-                  unit={stepFormat[step].unit}
-                  onChange={(value) => onChange(step, value)}
-                />
-              );
+          case "slider-age":
+            return (
+              <AgeSlider
+                min={format.min}
+                max={format.max}
+                interval={format.interval}
+                unit={format.unit}
+                onChange={(val) => onChange(step, val)}
+              />
+            );
 
-            case "dropdown":
-              return (
-                <select
-                  name={step}
-                  value={value}
-                  onChange={(e) => onChange(step, e.target.value)}
-                  required
-                  className="dropdown"
-                >
-                  <option value="" disabled>Select an option</option>
-                  {stepFormat[step].options.map((option) => (
-                    <option key={option.optionName} value={option.optionName}>
-                      {option.optionName}
-                    </option>
-                  ))}
-                </select>
-              );
+          case "dropdown":
+            return (
+              <select
+                name={step}
+                value={value}
+                onChange={(e) => onChange(step, e.target.value)}
+                required
+                className='dropdown'
+              >
+                <option value="" disabled>Select an option</option>
+                {format.options.map((option) => (
+                  <option key={option.optionName} value={option.optionName}>
+                    {option.optionName}
+                  </option>
+                ))}
+              </select>
+            );
 
-            default:
-              return <p>Unknown step type</p>;
-          }
-        })()}
-      </form>
+          default:
+            return <p>Unknown step type</p>;
+        }
+      })()}
     </div>
   );
 };

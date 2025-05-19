@@ -14,10 +14,8 @@ const SetUp = () => {
 
   const [step, setStep] = useState("gender");
   const steps = ["gender", "age", "height", "weight", "ethnicity"];
-
   const currentIndex = steps.indexOf(step);
   const isLastStep = step === steps[steps.length - 1];
-
   const navigate = useNavigate();
 
   const handleChange = (field, value) => {
@@ -25,6 +23,11 @@ const SetUp = () => {
   };
 
   const nextStep = async () => {
+    if (!formData[step]) {
+      alert("Please select a value before continuing.");
+      return;
+    }
+
     if (!isLastStep) {
       setStep(steps[currentIndex + 1]);
     } else {
@@ -32,9 +35,7 @@ const SetUp = () => {
         const userId = localStorage.getItem("userId") || "testUserId";
         const response = await fetch(`http://localhost:3001/api/bmi-feedback`, {
           method: 'POST',
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ userId, ...formData }),
         });
 
@@ -44,31 +45,27 @@ const SetUp = () => {
         alert("Setup completed! Your BMI feedback: " + data.feedback);
         navigate("/home");
       } catch (error) {
-        console.error("Submission error:", error);
         alert("An error occurred while submitting your data.");
+        console.error(error);
       }
     }
   };
 
   const prevStep = () => {
-    if (currentIndex > 0) {
-      setStep(steps[currentIndex - 1]);
-    }
-  };
-
-  const isStepComplete = () => {
-    const value = formData[step];
-    return value !== "" && value !== null && value !== undefined;
+    if (currentIndex > 0) setStep(steps[currentIndex - 1]);
   };
 
   return (
-    <div className="setup-wrapper">
+    <div>
       <SetUpStep step={step} value={formData[step]} onChange={handleChange} />
-      <div className="setup-buttons">
+
+      <div className="button-container">
         {step !== "gender" && (
-          <button className="back" onClick={prevStep}>Back</button>
+          <button className="back" onClick={prevStep}>
+            Back
+          </button>
         )}
-        <button className="continue" onClick={nextStep} disabled={!isStepComplete()}>
+        <button className="continue" onClick={nextStep}>
           {isLastStep ? "Finish" : "Continue"}
         </button>
       </div>
