@@ -1,4 +1,3 @@
-
 // import React, { useState, useEffect } from 'react';
 // import './Goals.css';
 
@@ -8,33 +7,14 @@
 //   const [deadline, setDeadline] = useState('');
 //   const [goals, setGoals] = useState([]);
 //   const [editingId, setEditingId] = useState(null);
+//   const [lastAddedGoal, setLastAddedGoal] = useState(null);
 
-//   const BACKEND_URL = 'http://localhost:3001';
-
-//   // Fetch goals from backend
-//   useEffect(() => {
-//     const fetchGoals = async () => {
-//       try {
-//         const res = await fetch(`${BACKEND_URL}/api/goals`);
-//         if (!res.ok) throw new Error('Failed to fetch goals');
-//         const data = await res.json();
-//         setGoals(data);
-//       } catch (err) {
-//         console.error('Error loading goals:', err);
-//       }
-//     };
-//     fetchGoals();
-//   }, []);
-
-//   // Alert if any goal deadline has passed
 //   useEffect(() => {
 //     const now = new Date();
 //     goals.forEach(goal => {
-//       if (goal.deadline) {
-//         const goalDate = new Date(goal.deadline);
-//         if (goalDate < now) {
-//           alert(`Goal "${goal.goalType}" is past its deadline. Consider updating it.`);
-//         }
+//       const goalDate = new Date(goal.deadline);
+//       if (goalDate < now) {
+//         alert(`Goal "${goal.goalType}" is past its deadline.`);
 //       }
 //     });
 //   }, [goals]);
@@ -46,61 +26,32 @@
 //     setEditingId(null);
 //   };
 
-//   const handleSubmit = async (e) => {
+//   const handleSubmit = (e) => {
 //     e.preventDefault();
-
 //     if (!goalType || !target || !deadline) {
 //       alert('Please fill in all fields.');
 //       return;
 //     }
 
-//     const entry = { goalType, target, deadline };
+//     const newGoal = {
+//       id: editingId || Date.now(),
+//       goalType,
+//       target,
+//       deadline,
+//     };
 
-//     try {
-//       if (editingId) {
-//         // Update existing goal
-//         const res = await fetch(`${BACKEND_URL}/api/goals/${editingId}`, {
-//           method: 'PUT',
-//           headers: { 'Content-Type': 'application/json' },
-//           body: JSON.stringify(entry),
-//         });
-//         if (!res.ok) throw new Error('Failed to update goal');
-//         const updatedGoal = await res.json();
-
-//         setGoals(goals.map(g => (g.id === editingId ? updatedGoal : g)));
-//       } else {
-//         // Create new goal
-//         const res = await fetch(`${BACKEND_URL}/api/goals`, {
-//           method: 'POST',
-//           headers: { 'Content-Type': 'application/json' },
-//           body: JSON.stringify(entry),
-//         });
-//         if (!res.ok) throw new Error('Failed to create goal');
-//         const newGoal = await res.json();
-
-//         setGoals([newGoal, ...goals]);
-//       }
-
-//       resetForm();
-//     } catch (err) {
-//       console.error('Submit failed:', err);
-//       alert('Error saving goal. Please try again.');
+//     if (editingId) {
+//       setGoals(goals.map(g => (g.id === editingId ? newGoal : g)));
+//     } else {
+//       setGoals([newGoal, ...goals]);
 //     }
+
+//     resetForm();
 //   };
 
-//   const handleDelete = async (id) => {
+//   const handleDelete = (id) => {
 //     if (!window.confirm('Are you sure you want to delete this goal?')) return;
-
-//     try {
-//       const res = await fetch(`${BACKEND_URL}/api/goals/${id}`, {
-//         method: 'DELETE',
-//       });
-//       if (!res.ok) throw new Error('Failed to delete goal');
-//       setGoals(goals.filter(g => g.id !== id));
-//     } catch (err) {
-//       console.error('Delete failed:', err);
-//       alert('Error deleting goal. Please try again.');
-//     }
+//     setGoals(goals.filter(g => g.id !== id));
 //   };
 
 //   const handleEdit = (id) => {
@@ -108,7 +59,7 @@
 //     if (goal) {
 //       setGoalType(goal.goalType);
 //       setTarget(goal.target);
-//       setDeadline(goal.deadline.slice(0, 10)); // format date for input[type=date]
+//       setDeadline(goal.deadline);
 //       setEditingId(id);
 //     }
 //   };
@@ -190,13 +141,23 @@
 //             </ul>
 //           )}
 //         </div>
+
+//         {/* Displays the last added goal */}
+//         {lastAddedGoal && (
+//           <div className="last-goal-card">
+//             <h3>Last Goal Added</h3>
+//             <p><strong>Type:</strong> {lastAddedGoal.goalType}</p>
+//             <p><strong>Target:</strong> {lastAddedGoal.target}</p>
+//             <p><strong>Deadline:</strong> {new Date(lastAddedGoal.deadline).toLocaleDateString()}</p>
+//             <p><strong>Created:</strong> {new Date(lastAddedGoal.created_at).toLocaleString()}</p>
+//           </div>
+//         )}
 //       </div>
 //     </div>
 //   );
 // };
 
 // export default Goals;
-
 
 import React, { useState, useEffect } from 'react';
 import './Goals.css';
@@ -207,40 +168,13 @@ const Goals = () => {
   const [deadline, setDeadline] = useState('');
   const [goals, setGoals] = useState([]);
   const [editingId, setEditingId] = useState(null);
-  const [lastAddedGoal, setLastAddedGoal] = useState(null);
 
-  const BACKEND_URL = 'http://localhost:3001';
-
-  // Fetch goals from backend
-  useEffect(() => {
-    const fetchGoals = async () => {
-      try {
-        const res = await fetch(`${BACKEND_URL}/api/goals`);
-        if (!res.ok) throw new Error('Failed to fetch goals');
-        const data = await res.json();
-        setGoals(data);
-        if (data.length > 0) {
-          const latest = data.reduce((latest, curr) =>
-            new Date(curr.created_at) > new Date(latest.created_at) ? curr : latest
-          );
-          setLastAddedGoal(latest);
-        }
-      } catch (err) {
-        console.error('Error loading goals:', err);
-      }
-    };
-    fetchGoals();
-  }, []);
-
-  // Alert if any goal deadline has passed
   useEffect(() => {
     const now = new Date();
     goals.forEach(goal => {
-      if (goal.deadline) {
-        const goalDate = new Date(goal.deadline);
-        if (goalDate < now) {
-          alert(`Goal "${goal.goalType}" is past its deadline. Consider updating it.`);
-        }
+      const goalDate = new Date(goal.deadline);
+      if (goalDate < now) {
+        alert(`Goal "${goal.goalType}" is past its deadline.`);
       }
     });
   }, [goals]);
@@ -252,70 +186,32 @@ const Goals = () => {
     setEditingId(null);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!goalType || !target || !deadline) {
       alert('Please fill in all fields.');
       return;
     }
 
-    const entry = { goalType, target, deadline };
+    const newGoal = {
+      id: editingId || Date.now(),
+      goalType,
+      target,
+      deadline,
+    };
 
-    try {
-      if (editingId) {
-        // Update existing goal
-        const res = await fetch(`${BACKEND_URL}/api/goals/${editingId}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(entry),
-        });
-        if (!res.ok) throw new Error('Failed to update goal');
-        const updatedGoal = await res.json();
-        setGoals(goals.map(g => (g.id === editingId ? updatedGoal : g)));
-      } else {
-        // Create new goal
-        const res = await fetch(`${BACKEND_URL}/api/goals`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(entry),
-        });
-        if (!res.ok) throw new Error('Failed to create goal');
-        const newGoal = await res.json();
-        setGoals([newGoal, ...goals]);
-        setLastAddedGoal(newGoal);
-      }
-
-      resetForm();
-    } catch (err) {
-      console.error('Submit failed:', err);
-      alert('Error saving goal. Please try again.');
+    if (editingId) {
+      setGoals(goals.map(g => (g.id === editingId ? newGoal : g)));
+    } else {
+      setGoals([newGoal, ...goals]);
     }
+
+    resetForm();
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = (id) => {
     if (!window.confirm('Are you sure you want to delete this goal?')) return;
-
-    try {
-      const res = await fetch(`${BACKEND_URL}/api/goals/${id}`, {
-        method: 'DELETE',
-      });
-      if (!res.ok) throw new Error('Failed to delete goal');
-      const updatedGoals = goals.filter(g => g.id !== id);
-      setGoals(updatedGoals);
-
-      // Update lastAddedGoal if the deleted one was the latest
-      if (lastAddedGoal && lastAddedGoal.id === id) {
-        const latest = updatedGoals.length > 0
-          ? updatedGoals.reduce((latest, curr) =>
-              new Date(curr.created_at) > new Date(latest.created_at) ? curr : latest)
-          : null;
-        setLastAddedGoal(latest);
-      }
-    } catch (err) {
-      console.error('Delete failed:', err);
-      alert('Error deleting goal. Please try again.');
-    }
+    setGoals(goals.filter(g => g.id !== id));
   };
 
   const handleEdit = (id) => {
@@ -323,7 +219,7 @@ const Goals = () => {
     if (goal) {
       setGoalType(goal.goalType);
       setTarget(goal.target);
-      setDeadline(goal.deadline.slice(0, 10)); // format date for input[type=date]
+      setDeadline(goal.deadline);
       setEditingId(id);
     }
   };
@@ -405,22 +301,9 @@ const Goals = () => {
             </ul>
           )}
         </div>
-
-        {/* Displays the last added goal */}
-        {lastAddedGoal && (
-          <div className="last-goal-card">
-            <h3>Last Goal Added</h3>
-            <p><strong>Type:</strong> {lastAddedGoal.goalType}</p>
-            <p><strong>Target:</strong> {lastAddedGoal.target}</p>
-            <p><strong>Deadline:</strong> {new Date(lastAddedGoal.deadline).toLocaleDateString()}</p>
-            <p><strong>Created:</strong> {new Date(lastAddedGoal.created_at).toLocaleString()}</p>
-          </div>
-        )}
       </div>
     </div>
   );
 };
 
 export default Goals;
-
-
