@@ -8,7 +8,7 @@ const DietCapture = () => {
     const [customFood, setCustomFood] = useState("");
     const [calories, setCalories] = useState("");
     const [mealType, setMealType] = useState("Breakfast");
-    const [lastAddedDiet, setLastAddedDiet] = useState(null);  // New state
+    const [lastAddedDiet, setLastAddedDiet] = useState(null); 
 
     useEffect(() => {
         fetch("http://localhost:3001/api/food-items")
@@ -93,7 +93,7 @@ const DietCapture = () => {
 
                 <button onClick={submitLog}>Submit</button>
 
-                {/* Display last added diet log */}
+                {/* Displays the last added diet log */}
                 {lastAddedDiet && (
                     <div className="diet-log-card">
                         <h3>Diet Log Added</h3>

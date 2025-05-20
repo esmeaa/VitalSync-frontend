@@ -11,14 +11,12 @@
 .diet-history h2 {
     text-align: center;
     color: #4b0082;
-    /* dark purple */
     margin-bottom: 1rem;
 }
 
 .diet-history .no-logs {
     text-align: center;
     color: #6a5495;
-    /* lighter purple */
     font-style: italic;
 }
 
@@ -33,25 +31,21 @@
     padding: 0.75rem 1rem;
     border-radius: 8px;
     border-left: 5px solid #7b4baf;
-    /* purple accent */
     box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
     transition: background-color 0.3s ease;
 }
 
 .diet-item:hover {
     background-color: #ede6f7;
-    /* very light purple */
 }
 
 .food-name {
     font-weight: 600;
     color: #6a4a9e;
-    /* medium purple */
 }
 
 .diet-details {
     font-size: 0.9rem;
     color: #5b4a7d;
-    /* muted purple */
     margin-top: 0.25rem;
 }
