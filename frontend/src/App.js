@@ -57,7 +57,7 @@ import Goals from './pages/Goals';
 import GroupsPage from './pages/GroupsPage';
 import ExerciseHistory from './pages/ExerciseHistory';
 import Exercise from './pages/Exercise';
-// import Home from './pages/Home';
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -76,7 +76,7 @@ function App() {
         <Route path="/GroupsPage" element={<GroupsPage />} />
         <Route path="/Exercise" element={<Exercise />} />
         <Route path="/ExerciseHistory" element={<ExerciseHistory />} />
-        {/* <Route path="/Home" element={<Home />} /> */}
+         <Route path="/Home" element={<Home />} /> 
   
       </Routes>
     </div>
